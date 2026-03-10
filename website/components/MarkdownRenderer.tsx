@@ -26,6 +26,11 @@ const components: Components = {
     const id = slugify(String(children));
     return <h3 id={id}>{children}</h3>;
   },
+  a: ({ href, children }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  ),
   table: ({ children }) => (
     <div className="table-wrapper">
       <table>{children}</table>
