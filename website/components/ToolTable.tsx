@@ -35,76 +35,49 @@ function isNoFreeTier(text: string): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// Sub-components: badges, chips, icons
+// Sub-components: badges, chips
 // ---------------------------------------------------------------------------
 
 function FreeTierBadge({ text }: { text: string }) {
   const plain = text.trim();
+  const baseClass = "inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border border-border-light bg-bg-secondary text-text-secondary leading-tight max-w-[14rem]";
+
   if (isFreeTier(plain)) {
     return (
-      <span
-        className="tool-badge tool-badge-free"
-        title={plain}
-        aria-label={`Free tier: ${plain}`}
-      >
-        <CheckIcon />
-        {plain.length > 28 ? plain.slice(0, 26) + "…" : plain}
+      <span className={baseClass} title={plain} aria-label={`Free tier: ${plain}`}>
+        Free tier
       </span>
     );
   }
   if (isNoFreeTier(plain)) {
     return (
-      <span className="tool-badge tool-badge-paid" aria-label="No free tier">
-        <CrossIcon />
-        Paid only
+      <span className={baseClass} aria-label="No free tier">
+        Paid
       </span>
     );
   }
-  // Partial / limited
   return (
-    <span className="tool-badge tool-badge-limited" aria-label={`Limited: ${plain}`}>
-      <DotIcon />
-      {plain.length > 28 ? plain.slice(0, 26) + "…" : plain}
+    <span className={baseClass} aria-label={`Limited: ${plain}`}>
+      {plain.length > 28 ? plain.slice(0, 26) + "\u2026" : plain}
     </span>
   );
 }
 
-/**
- * Parse a price string and color-code it.
- * - free / $0 → green
- * - < $1/MTok → yellow-green
- * - $1-10 → amber
- * - > $10 → red
- */
 function PriceDisplay({ children }: { children: React.ReactNode }) {
-  const text = getTextContent(children).toLowerCase();
-  const hasFreeModel =
-    text.includes("free") || text.includes("open source") || text === "-";
-
-  // Pull the first dollar amount found for color hinting
-  const amounts = text.match(/\$[\d.]+/g) ?? [];
-  const firstRawAmount: string | undefined = amounts[0];
-  const firstAmount: number | null =
-    firstRawAmount !== undefined ? parseFloat(firstRawAmount.replace("$", "")) : null;
-
-  let colorClass = "text-text-secondary";
-  if (hasFreeModel) colorClass = "price-free";
-  else if (firstAmount !== null && firstAmount < 1) colorClass = "price-cheap";
-  else if (firstAmount !== null && firstAmount < 10) colorClass = "price-mid";
-  else if (firstAmount !== null && firstAmount >= 10) colorClass = "price-expensive";
-
-  return <span className={`price-display ${colorClass}`}>{children}</span>;
+  return (
+    <span className="text-xs font-medium font-mono text-text-secondary leading-snug max-w-[14rem] block">
+      {children}
+    </span>
+  );
 }
 
 function SdkChip({ children }: { children: React.ReactNode }) {
   const text = getTextContent(children).trim();
-  // Strip surrounding backticks from markdown code spans that remark already resolved
   const label = text.replace(/^`|`$/g, "");
-  const isOpenAICompat = label.toLowerCase().includes("openai-compatible");
 
   return (
     <span
-      className={`sdk-chip ${isOpenAICompat ? "sdk-chip-compat" : "sdk-chip-native"}`}
+      className="inline-flex items-center text-xs font-mono px-2 py-0.5 rounded bg-bg-secondary border border-border-light text-text-secondary max-w-full overflow-hidden text-ellipsis whitespace-nowrap"
       title={label}
     >
       {label}
@@ -117,34 +90,8 @@ function BestForTagline({ children }: { children: React.ReactNode }) {
 }
 
 // ---------------------------------------------------------------------------
-// SVG icon helpers (inline, no extra dep)
+// SVG icon helper
 // ---------------------------------------------------------------------------
-
-function CheckIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
-
-function CrossIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-  );
-}
-
-function DotIcon() {
-  return (
-    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" />
-    </svg>
-  );
-}
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
@@ -209,10 +156,9 @@ interface ToolRowProps {
   row: ParsedRow;
   headers: string[];
   columnTypes: KnownColumn[];
-  index: number;
 }
 
-function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
+function ToolRow({ row, headers, columnTypes }: ToolRowProps) {
   const [expanded, setExpanded] = useState(false);
 
   const nameIdx = columnTypes.indexOf("name");
@@ -227,13 +173,11 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
   const bestForCell = bestForIdx >= 0 ? row.cells[bestForIdx] : null;
   const sdkCell = sdkIdx >= 0 ? row.cells[sdkIdx] : null;
 
-  // All columns that are NOT name/freeTier/price/sdk/bestFor go into expanded detail
   const detailIndices = columnTypes
     .map((ct, i) => ({ ct, i }))
     .filter(({ ct, i }) => {
       const isTopLevel =
         ct === "name" || ct === "freeTier" || ct === "price" || ct === "sdk" || ct === "bestFor";
-      // Always surface 'type' and 'apiAvailable' inline for speech/image/video tables
       const isSurfaced = ct === "type" || ct === "apiAvailable" || ct === "dimensions";
       return !isTopLevel && !isSurfaced && i < row.cells.length;
     })
@@ -241,10 +185,10 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
 
   const surfacedIndices = columnTypes
     .map((ct, i) => ({ ct, i }))
-    .filter(({ ct, i }) =>
-      (ct === "type" || ct === "apiAvailable" || ct === "dimensions") &&
-      i < row.cells.length
+    .filter(({ ct }) =>
+      ct === "type" || ct === "apiAvailable" || ct === "dimensions"
     )
+    .filter(({ i }) => i < row.cells.length)
     .map(({ i }) => i);
 
   const hasDetails = detailIndices.length > 0 || bestForCell !== null || sdkCell !== null;
@@ -252,11 +196,7 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
   const freeTierText = freeTierCell ? getTextContent(freeTierCell) : "";
 
   return (
-    <div
-      className={`tool-row ${expanded ? "tool-row-expanded" : ""}`}
-      style={{ animationDelay: `${index * 30}ms` }}
-    >
-      {/* Summary bar (always visible) */}
+    <div className={`tool-row ${expanded ? "tool-row-expanded" : ""}`}>
       <button
         className="tool-row-summary"
         onClick={() => setExpanded((prev) => !prev)}
@@ -264,42 +204,37 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
         disabled={!hasDetails}
         style={{ cursor: hasDetails ? "pointer" : "default" }}
       >
-        {/* Name + best-for tagline */}
         <div className="tool-row-name-col">
           <div className="tool-row-name">{nameCell}</div>
           {bestForCell && (
-            <div className="tool-row-tagline">
+            <div>
               <BestForTagline>{bestForCell}</BestForTagline>
             </div>
           )}
         </div>
 
-        {/* Surfaced metadata chips (type, api, dimensions) */}
         {surfacedIndices.length > 0 && (
           <div className="tool-row-surfaced">
             {surfacedIndices.map((i) => (
-              <span key={i} className="tool-meta-chip">
+              <span key={i} className="text-xs font-medium text-text-secondary">
                 {row.cells[i]}
               </span>
             ))}
           </div>
         )}
 
-        {/* Free tier badge */}
         {freeTierCell && (
           <div className="tool-row-free">
             <FreeTierBadge text={freeTierText} />
           </div>
         )}
 
-        {/* Price */}
         {priceCell && (
           <div className="tool-row-price">
             <PriceDisplay>{priceCell}</PriceDisplay>
           </div>
         )}
 
-        {/* Expand chevron */}
         {hasDetails && (
           <div className="tool-row-chevron" aria-hidden="true">
             <ChevronIcon open={expanded} />
@@ -307,10 +242,8 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
         )}
       </button>
 
-      {/* Expanded detail panel */}
       {expanded && (
         <div className="tool-row-detail" role="region">
-          {/* Best For as a full-width highlight if there's content */}
           {bestForCell && (
             <div className="detail-section">
               <span className="detail-label">Best For</span>
@@ -318,7 +251,6 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
             </div>
           )}
 
-          {/* SDK */}
           {sdkCell && (
             <div className="detail-section">
               <span className="detail-label">TypeScript SDK</span>
@@ -328,7 +260,6 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
             </div>
           )}
 
-          {/* Free Tier full text */}
           {freeTierCell && freeTierText.length > 10 && (
             <div className="detail-section">
               <span className="detail-label">Free Tier</span>
@@ -336,7 +267,6 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
             </div>
           )}
 
-          {/* Price full text */}
           {priceCell && (
             <div className="detail-section">
               <span className="detail-label">Pricing</span>
@@ -344,7 +274,6 @@ function ToolRow({ row, headers, columnTypes, index }: ToolRowProps) {
             </div>
           )}
 
-          {/* All other columns */}
           {detailIndices.map((i) => (
             <div key={i} className="detail-section">
               <span className="detail-label">{headers[i]}</span>
@@ -369,7 +298,6 @@ export default function ToolTable({ children }: ToolTableProps) {
   const headers: string[] = [];
   const rows: ParsedRow[] = [];
 
-  // Walk the <table> children (thead, tbody)
   React.Children.forEach(children, (child) => {
     if (!React.isValidElement<{ children?: React.ReactNode }>(child)) return;
     const tag = child.type as string;
@@ -399,7 +327,6 @@ export default function ToolTable({ children }: ToolTableProps) {
 
   const columnTypes = headers.map(detectColumnType);
 
-  // Detect if this is a "stack" table (Layer / Pick / Why) vs a tool comparison table
   const isStackTable = columnTypes.includes("layer") || columnTypes.includes("pick");
 
   if (isStackTable) {
@@ -408,7 +335,6 @@ export default function ToolTable({ children }: ToolTableProps) {
 
   return (
     <div className="tool-table" role="list" aria-label="Tool comparison table">
-      {/* Column header hint strip (desktop only) */}
       <div className="tool-table-header-strip" aria-hidden="true">
         <div className="tool-header-name">Tool</div>
         <div className="tool-header-right">
@@ -427,7 +353,6 @@ export default function ToolTable({ children }: ToolTableProps) {
             row={row}
             headers={headers}
             columnTypes={columnTypes}
-            index={i}
           />
         </div>
       ))}
@@ -436,7 +361,7 @@ export default function ToolTable({ children }: ToolTableProps) {
 }
 
 // ---------------------------------------------------------------------------
-// StackTable — for the "Must-Have Stack" tables (Layer / Pick / Why / Cost)
+// StackTable
 // ---------------------------------------------------------------------------
 
 interface StackTableProps {
@@ -465,11 +390,7 @@ function StackTable({ headers, columnTypes, rows }: StackTableProps) {
                 className={`stack-cell stack-cell-${ct}`}
                 role="cell"
               >
-                {ct === "price" || ct === "monthlyCost" ? (
-                  <PriceDisplay>{cell}</PriceDisplay>
-                ) : (
-                  cell
-                )}
+                {cell}
               </div>
             );
           })}

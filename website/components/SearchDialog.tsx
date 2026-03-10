@@ -41,7 +41,6 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
       close();
       const el = document.getElementById(tool.sectionId);
       if (el) {
-        // If the section heading is collapsed, click to expand it
         if (el.getAttribute("aria-expanded") === "false") {
           el.click();
         }
@@ -53,7 +52,6 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
     [close]
   );
 
-  // Listen for custom event (from SearchTrigger) and Cmd+K
   useEffect(() => {
     function handleOpenSearch() {
       if (isOpen) close();
@@ -78,14 +76,12 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
     };
   }, [isOpen, open, close]);
 
-  // Focus input when opened
   useEffect(() => {
     if (isOpen) {
       requestAnimationFrame(() => inputRef.current?.focus());
     }
   }, [isOpen]);
 
-  // Arrow key navigation within the dialog
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -99,12 +95,10 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
     }
   };
 
-  // Reset selection on query change
   useEffect(() => {
     setSelectedIndex(0);
   }, [query]);
 
-  // Keep selected item in view
   useEffect(() => {
     if (listRef.current) {
       const selected = listRef.current.children[selectedIndex] as HTMLElement;
@@ -151,7 +145,7 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
             autoComplete="off"
             spellCheck={false}
           />
-          <kbd className="search-kbd">esc</kbd>
+          <kbd className="text-[0.65rem] font-medium px-1.5 py-0.5 bg-bg-secondary border border-border rounded font-sans text-text-muted shrink-0">esc</kbd>
         </div>
 
         <div className="search-results" ref={listRef}>
@@ -169,13 +163,6 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
               >
                 <div className="search-result-left">
                   <span className="search-result-name">{tool.name}</span>
-                  {tool.bestFor && (
-                    <span className="search-result-bestfor">
-                      {tool.bestFor.length > 80
-                        ? tool.bestFor.slice(0, 78) + "..."
-                        : tool.bestFor}
-                    </span>
-                  )}
                 </div>
                 <span className="search-result-section">{tool.section}</span>
               </button>

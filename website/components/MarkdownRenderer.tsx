@@ -31,41 +31,6 @@ function getTextFromChildren(children: React.ReactNode): string {
   return "";
 }
 
-/** Count tool rows in a raw markdown section (lines matching | **[ pattern) */
-function countToolsInSection(rawMarkdown: string): number {
-  return (rawMarkdown.match(/\|\s*\*\*\[/g) || []).length;
-}
-
-// ---------------------------------------------------------------------------
-// Category color mapping — keyed on lowercase substrings of the h2 text
-// ---------------------------------------------------------------------------
-
-const CATEGORY_COLORS: [string, string][] = [
-  ["llm provider",      "var(--cat-blue)"],
-  ["llm orchestration", "var(--cat-purple)"],
-  ["orchestration",     "var(--cat-purple)"],
-  ["routing",           "var(--cat-purple)"],
-  ["embedding",         "var(--cat-teal)"],
-  ["vector",            "var(--cat-teal)"],
-  ["speech",            "var(--cat-orange)"],
-  ["audio",             "var(--cat-orange)"],
-  ["image",             "var(--cat-pink)"],
-  ["video",             "var(--cat-red)"],
-  ["agent",             "var(--cat-indigo)"],
-  ["ai-powered",        "var(--cat-green)"],
-  ["feature",           "var(--cat-green)"],
-  ["stack",             "var(--cat-amber)"],
-  ["principle",         "var(--cat-gray)"],
-];
-
-function getCategoryColor(heading: string): string {
-  const lower = heading.toLowerCase();
-  for (const [key, value] of CATEGORY_COLORS) {
-    if (lower.includes(key)) return value;
-  }
-  return "var(--cat-blue)";
-}
-
 // ---------------------------------------------------------------------------
 // CollapsibleSection — wraps each h2 block
 // ---------------------------------------------------------------------------
@@ -73,45 +38,28 @@ function getCategoryColor(heading: string): string {
 interface CollapsibleSectionProps {
   headingId: string;
   headingText: string;
-  color: string;
-  toolCount: number;
   children: React.ReactNode;
 }
 
 function CollapsibleSection({
   headingId,
   headingText,
-  color,
-  toolCount,
   children,
 }: CollapsibleSectionProps) {
   const [open, setOpen] = React.useState(true);
 
   return (
-    <section
-      className="cat-section"
-      style={{ "--cat-color": color } as React.CSSProperties}
-      aria-label={headingText}
-    >
+    <section className="cat-section" aria-label={headingText}>
       <button
         id={headingId}
-        className="cat-section-heading"
+        className="flex items-center gap-3 w-full p-4 bg-bg-secondary border-none cursor-pointer text-left font-sans text-base font-semibold text-text tracking-tight hover:bg-bg-hover focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px]"
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-controls={`${headingId}-body`}
       >
-        <span className="cat-section-dot" aria-hidden="true" />
-        <span className="cat-section-title">{headingText}</span>
-        {toolCount > 0 && (
-          <span className="cat-section-count" aria-label={`${toolCount} tools`}>
-            {toolCount}
-          </span>
-        )}
-        <span className="cat-section-toggle" aria-hidden="true">
-          {open ? "Hide" : "Show"}
-        </span>
+        <span className="flex-1 min-w-0">{headingText}</span>
         <svg
-          className="cat-section-chevron"
+          className="shrink-0 text-text-muted"
           width="16"
           height="16"
           viewBox="0 0 24 24"
@@ -201,7 +149,9 @@ const sharedComponents: Components = {
     return <h3 id={id}>{children}</h3>;
   },
   blockquote: ({ children }) => (
-    <blockquote className="md-blockquote">{children}</blockquote>
+    <blockquote className="border-l-3 border-border pl-4 text-text-secondary italic my-4">
+      {children}
+    </blockquote>
   ),
 };
 
@@ -229,15 +179,11 @@ export default function MarkdownRenderer({ content }: { content: string }) {
       {/* One CollapsibleSection per ## heading */}
       {sections.map((section, idx) => {
         const id = slugify(section.headingText);
-        const color = getCategoryColor(section.headingText);
-        const toolCount = countToolsInSection(section.rawMarkdown);
         return (
           <CollapsibleSection
             key={idx}
             headingId={id}
             headingText={section.headingText}
-            color={color}
-            toolCount={toolCount}
           >
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
