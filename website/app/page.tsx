@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import TableOfContents from "@/components/TableOfContents";
+import CopyMarkdownButton from "@/components/CopyMarkdownButton";
 import { extractTocItems } from "@/lib/toc";
 
 export default function Home() {
@@ -23,9 +24,12 @@ export default function Home() {
             <p className="text-text-secondary mt-2 text-base">
               A reference for indie hackers building with TypeScript/Next.js
             </p>
-            <p className="text-text-muted text-sm mt-1">
-              Updated March 2026
-            </p>
+            <div className="flex items-center gap-3 mt-3">
+              <p className="text-text-muted text-sm">
+                Updated March 2026
+              </p>
+              <CopyMarkdownButton content={content} />
+            </div>
           </header>
 
           {/* Content */}
