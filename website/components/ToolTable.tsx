@@ -128,10 +128,10 @@ type KnownColumn =
 
 function detectColumnType(header: string): KnownColumn {
   const h = header.toLowerCase().replace(/[^a-z]/g, "");
-  if (h === "name") return "name";
+  if (h === "name" || h === "platform") return "name";
   if (h.includes("free")) return "freeTier";
-  if (h.startsWith("price") || h === "cost" || h.includes("monthlycost")) return "price";
-  if (h === "tssdk" || h === "sdk") return "sdk";
+  if (h.startsWith("price") || h === "cost" || h.includes("monthlycost") || h === "fees" || h.includes("fee")) return "price";
+  if (h === "tssdk" || h === "sdk" || (h.includes("ts") && (h.includes("next") || h.includes("support")))) return "sdk";
   if (h.includes("bestfor")) return "bestFor";
   if (h === "type") return "type";
   if (h.includes("api")) return "apiAvailable";

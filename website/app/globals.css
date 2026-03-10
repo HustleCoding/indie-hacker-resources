@@ -588,6 +588,46 @@ body {
 }
 
 /* ============================================================
+   NON-TABLE SECTION CONTENT (h3 subsections with bullet lists)
+   ============================================================ */
+
+.cat-section-body > h3,
+.cat-section-body .markdown-body h3 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0;
+  padding: 0.875rem 1rem 0.5rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.cat-section-body > h3:first-child,
+.cat-section-body .markdown-body h3:first-child {
+  border-top: none;
+}
+
+.cat-section-body > ul,
+.cat-section-body .markdown-body ul {
+  margin: 0 0 0.5rem;
+  padding: 0 1rem 0.5rem 2.25rem;
+}
+
+.cat-section-body > ul > li,
+.cat-section-body .markdown-body ul > li {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0.2rem 0;
+}
+
+.cat-section-body > p,
+.cat-section-body .markdown-body p {
+  padding: 0 1rem;
+}
+
+/* ============================================================
    MOTION SAFETY
    ============================================================ */
 
