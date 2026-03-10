@@ -8,20 +8,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Indie Hacker Resources — AI & LLM API Landscape",
+  title: "Indie Hacker Resources",
   description:
-    "Comprehensive reference of AI APIs, LLM providers, and tools for solo developers building AI-powered SaaS with TypeScript/Next.js. Updated March 2026.",
+    "Curated tool guides for solo developers building SaaS with TypeScript/Next.js. AI APIs, payment processing, billing, and more.",
   openGraph: {
-    title: "Indie Hacker Resources — AI & LLM API Landscape",
+    title: "Indie Hacker Resources",
     description:
-      "Every AI API an indie hacker needs in 2026. LLMs, embeddings, speech, images, agents — pricing, SDKs, and gotchas.",
+      "Curated tool guides for solo developers building SaaS with TypeScript/Next.js.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI & LLM API Landscape for Indie Hackers",
+    title: "Indie Hacker Resources",
     description:
-      "Every AI API you need to build an AI-powered SaaS. Pricing, SDKs, gotchas, and a $15-100/mo starter stack.",
+      "Curated tool guides for solo developers building SaaS with TypeScript/Next.js.",
   },
 };
 

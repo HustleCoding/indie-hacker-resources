@@ -88,7 +88,7 @@ export default function TableOfContents({
       >
         <div className="mb-5 pb-4 border-b border-border">
           <a
-            href="#"
+            href="/"
             className="text-text text-sm font-semibold no-underline hover:text-accent transition-colors"
           >
             Indie Hacker Resources
