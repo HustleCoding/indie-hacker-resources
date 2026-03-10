@@ -475,12 +475,11 @@ body {
   border: 1px solid var(--color-border);
   border-radius: 12px;
   overflow: hidden;
-  border-left: 3px solid var(--cat-color, var(--cat-blue));
   transition: box-shadow 0.2s;
 }
 
 .cat-section:hover {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cat-section-heading {
@@ -511,8 +510,8 @@ body {
 }
 
 .cat-section-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--cat-color, var(--cat-blue));
   flex-shrink: 0;
@@ -592,8 +591,8 @@ body {
 
 .tool-header-name { flex: 1; }
 .tool-header-right { display: flex; gap: 1.5rem; align-items: center; }
-.tool-header-free { width: 7rem; text-align: right; }
-.tool-header-price { width: 6rem; text-align: right; }
+.tool-header-free { width: 10rem; text-align: right; }
+.tool-header-price { width: 10rem; text-align: right; }
 
 /* ============================================================
    TOOL ROW
@@ -778,11 +777,8 @@ body {
   padding: 0.25rem 0.55rem;
   border-radius: 20px;
   border: 1px solid transparent;
-  white-space: nowrap;
-  max-width: 10rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.2;
+  line-height: 1.3;
+  max-width: 14rem;
 }
 
 .tool-badge-free {
@@ -808,15 +804,13 @@ body {
    ============================================================ */
 
 .price-display {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 500;
   font-family: var(--font-mono);
   letter-spacing: -0.01em;
-  max-width: 8rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 14rem;
   display: block;
+  line-height: 1.4;
 }
 
 .price-free { color: var(--price-free-text); }
