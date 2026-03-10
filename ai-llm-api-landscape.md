@@ -10,16 +10,16 @@ The core decision. Price is per 1M tokens (input/output).
 
 | Name | Free Tier | Price (Input / Output per 1M tokens) | TS SDK | Best For |
 |------|-----------|--------------------------------------|--------|----------|
-| **Anthropic Claude** | None (pay-as-you-go) | Haiku 4.5: $0.25/$1.25 · Sonnet 4.6: $3/$15 · Opus 4.6: $5/$25 (fast mode: $30/$150) | `@anthropic-ai/sdk` — excellent, first-class TS | Complex reasoning, 1M context (Opus 4.6), tool use, coding. Best docs in the space. |
-| **OpenAI** | $5 free credits (expire 3mo) | GPT-4o: $2.50/$10 · GPT-5.2: $1.75/$14 · GPT-5.4: from $2.50 · o3 Pro: $150/MTok | `openai` — gold standard TS SDK | Broadest ecosystem, function calling, multimodal. Batch/Flex/Standard/Priority tiers. |
-| **Google Gemini** | Yes — 15 RPM, 1K/day, no card | Flash-Lite 2.5: $0.10/$0.40 · Flash 2.5: $0.30/varies · Pro 2.5: $1.25/$10 · 3.1 Pro: $2/$12 | `@google/generative-ai` — decent | Best free tier for prototyping. Massive 1M+ context window. Batch mode 50% off. |
-| **Mistral** | None | Nemo: $0.02/$0.02 · Ministral-8b: $0.10/$0.10 · Medium 3: $0.40/$2 · Large 3: $0.50/$1.50 | `@mistralai/mistralai` — good | European hosting (GDPR). Nemo at $0.02/MTok is absurdly cheap for small tasks. |
-| **Groq** | Yes — free tier, rate-limited | $0.05-$0.90/MTok depending on model (hosts open-source models on LPU hardware) | OpenAI-compatible API | Ultra-fast inference (LPU hardware). Best for latency-sensitive apps. |
-| **Together AI** | None | Open-source models from $0.05/MTok. Llama, Qwen, DeepSeek hosted. | OpenAI-compatible API | Running open-source models without infra. 200+ models, one API. |
-| **Fireworks AI** | None | Small models ~$0.20/MTok · DeepSeek V3.2: $0.56/$1.68 | OpenAI-compatible API | Fast open-source inference. Good fine-tuning support (no extra serving cost). |
-| **DeepSeek** | Limited free credits | V3.1: $0.15/MTok · V3.2: $0.28/$0.42 · R1: $0.50/$2.18 (off-peak 50-75% off) | OpenAI-compatible API | Absurdly cheap. V3.2 unifies chat + reasoning. Off-peak discounts are wild. |
-| **Cohere** | Trial (1K calls/mo) | Command R: $0.15/$0.60 · Command R+: $2.50/$10 · Embed 4: $0.12/MTok · Rerank: $2/1K | `cohere-ai` — good TS SDK | Enterprise RAG pipelines (Embed + Rerank + Command in one vendor). |
-| **xAI Grok** | $25 free credits + $150/mo data-sharing program | Grok 4.1 Fast: $0.20/$0.50 · Grok 4: $3/$15 | OpenAI-compatible API | Real-time X/Twitter data access. Most generous free credits via data sharing. |
+| **[Anthropic Claude](https://www.anthropic.com)** | None (pay-as-you-go) | Haiku 4.5: $0.25/$1.25 · Sonnet 4.6: $3/$15 · Opus 4.6: $5/$25 (fast mode: $30/$150) | `@anthropic-ai/sdk` — excellent, first-class TS | Complex reasoning, 1M context (Opus 4.6), tool use, coding. Best docs in the space. |
+| **[OpenAI](https://platform.openai.com)** | $5 free credits (expire 3mo) | GPT-4o: $2.50/$10 · GPT-5.2: $1.75/$14 · GPT-5.4: from $2.50 · o3 Pro: $150/MTok | `openai` — gold standard TS SDK | Broadest ecosystem, function calling, multimodal. Batch/Flex/Standard/Priority tiers. |
+| **[Google Gemini](https://ai.google.dev)** | Yes — 15 RPM, 1K/day, no card | Flash-Lite 2.5: $0.10/$0.40 · Flash 2.5: $0.30/varies · Pro 2.5: $1.25/$10 · 3.1 Pro: $2/$12 | `@google/generative-ai` — decent | Best free tier for prototyping. Massive 1M+ context window. Batch mode 50% off. |
+| **[Mistral](https://mistral.ai)** | None | Nemo: $0.02/$0.02 · Ministral-8b: $0.10/$0.10 · Medium 3: $0.40/$2 · Large 3: $0.50/$1.50 | `@mistralai/mistralai` — good | European hosting (GDPR). Nemo at $0.02/MTok is absurdly cheap for small tasks. |
+| **[Groq](https://groq.com)** | Yes — free tier, rate-limited | $0.05-$0.90/MTok depending on model (hosts open-source models on LPU hardware) | OpenAI-compatible API | Ultra-fast inference (LPU hardware). Best for latency-sensitive apps. |
+| **[Together AI](https://www.together.ai)** | None | Open-source models from $0.05/MTok. Llama, Qwen, DeepSeek hosted. | OpenAI-compatible API | Running open-source models without infra. 200+ models, one API. |
+| **[Fireworks AI](https://fireworks.ai)** | None | Small models ~$0.20/MTok · DeepSeek V3.2: $0.56/$1.68 | OpenAI-compatible API | Fast open-source inference. Good fine-tuning support (no extra serving cost). |
+| **[DeepSeek](https://www.deepseek.com)** | Limited free credits | V3.1: $0.15/MTok · V3.2: $0.28/$0.42 · R1: $0.50/$2.18 (off-peak 50-75% off) | OpenAI-compatible API | Absurdly cheap. V3.2 unifies chat + reasoning. Off-peak discounts are wild. |
+| **[Cohere](https://cohere.com)** | Trial (1K calls/mo) | Command R: $0.15/$0.60 · Command R+: $2.50/$10 · Embed 4: $0.12/MTok · Rerank: $2/1K | `cohere-ai` — good TS SDK | Enterprise RAG pipelines (Embed + Rerank + Command in one vendor). |
+| **[xAI Grok](https://x.ai)** | $25 free credits + $150/mo data-sharing program | Grok 4.1 Fast: $0.20/$0.50 · Grok 4: $3/$15 | OpenAI-compatible API | Real-time X/Twitter data access. Most generous free credits via data sharing. |
 
 ### Price/Performance Sweet Spots
 
@@ -45,11 +45,11 @@ These sit between you and the LLM providers, adding observability, fallbacks, ca
 
 | Name | Free Tier | Price | TS SDK | Best For |
 |------|-----------|-------|--------|----------|
-| **OpenRouter** | Free models available (rate-limited) | 5% markup on base provider costs. No minimums, no expiration. | OpenAI-compatible API | Single API for 290+ models. Automatic fallbacks. Best for model-hopping. |
-| **LiteLLM** | Open source (self-host free) | Free OSS; hosted proxy plans available | Python-first, but OpenAI-compatible REST | Unified OpenAI-format proxy for 100+ providers. Great if you self-host. |
-| **Portkey** | Free tier (10K requests/mo) | From $49/mo | `portkey-ai` — good TS SDK | AI gateway with caching, load balancing, guardrails. Production-grade. |
-| **Helicone** | Free tier (100K requests/mo) | Usage-based beyond free tier | 1-line integration (proxy URL) | Observability & logging. Easiest setup — just change the base URL. |
-| **Braintrust** | Free tier available | Usage-based | TS SDK available | LLM evaluation & experiments. Best for systematic prompt optimization. |
+| **[OpenRouter](https://openrouter.ai)** | Free models available (rate-limited) | 5% markup on base provider costs. No minimums, no expiration. | OpenAI-compatible API | Single API for 290+ models. Automatic fallbacks. Best for model-hopping. |
+| **[LiteLLM](https://www.litellm.ai)** | Open source (self-host free) | Free OSS; hosted proxy plans available | Python-first, but OpenAI-compatible REST | Unified OpenAI-format proxy for 100+ providers. Great if you self-host. |
+| **[Portkey](https://portkey.ai)** | Free tier (10K requests/mo) | From $49/mo | `portkey-ai` — good TS SDK | AI gateway with caching, load balancing, guardrails. Production-grade. |
+| **[Helicone](https://www.helicone.ai)** | Free tier (100K requests/mo) | Usage-based beyond free tier | 1-line integration (proxy URL) | Observability & logging. Easiest setup — just change the base URL. |
+| **[Braintrust](https://www.braintrust.dev)** | Free tier available | Usage-based | TS SDK available | LLM evaluation & experiments. Best for systematic prompt optimization. |
 
 ### What They Add (and When You Need Them)
 
@@ -73,11 +73,11 @@ For RAG, semantic search, and similarity features. Pricing is per 1M tokens embe
 
 | Name | Free Tier | Price (per 1M tokens) | Dimensions | Best For |
 |------|-----------|----------------------|------------|----------|
-| **OpenAI Embeddings** | $5 free credits | Small: $0.02 · Large: $0.13 | 1536 / 3072 | Default choice. Cheapest at scale. Huge ecosystem. |
-| **Voyage AI** | 200M free text tokens per account | Voyage-4: ~$0.06/MTok · Multimodal models also available | Up to 2048 | Top MTEB scores. Best quality for code & legal. Now part of Anthropic. |
-| **Cohere Embed** | Trial (1K calls/mo) | Embed v3: $0.10/MTok · Embed 4: $0.12/MTok | 1024 | Pairs with Cohere Rerank ($2/1K searches) for best RAG results. |
-| **Jina Embeddings** | Generous free tier (millions of tokens) | Usage-based (competitive) | Up to 8192 | jina-embeddings-v4: 3.8B unified model. Text + images. Outperforms proprietary on doc retrieval. |
-| **Mixedbread** | Free tier | Competitive with OpenAI | Variable | Strong MTEB performer. Good for multilingual search. |
+| **[OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings)** | $5 free credits | Small: $0.02 · Large: $0.13 | 1536 / 3072 | Default choice. Cheapest at scale. Huge ecosystem. |
+| **[Voyage AI](https://www.voyageai.com)** | 200M free text tokens per account | Voyage-4: ~$0.06/MTok · Multimodal models also available | Up to 2048 | Top MTEB scores. Best quality for code & legal. Now part of Anthropic. |
+| **[Cohere Embed](https://cohere.com/embed)** | Trial (1K calls/mo) | Embed v3: $0.10/MTok · Embed 4: $0.12/MTok | 1024 | Pairs with Cohere Rerank ($2/1K searches) for best RAG results. |
+| **[Jina Embeddings](https://jina.ai/embeddings)** | Generous free tier (millions of tokens) | Usage-based (competitive) | Up to 8192 | jina-embeddings-v4: 3.8B unified model. Text + images. Outperforms proprietary on doc retrieval. |
+| **[Mixedbread](https://www.mixedbread.ai)** | Free tier | Competitive with OpenAI | Variable | Strong MTEB performer. Good for multilingual search. |
 
 ### Recommendations
 
@@ -99,12 +99,12 @@ STT = Speech-to-Text, TTS = Text-to-Speech.
 
 | Name | Type | Free Tier | Price | TS SDK | Best For |
 |------|------|-----------|-------|--------|----------|
-| **OpenAI Whisper API** | STT | $5 free credits | $0.006/min ($0.36/hr) · GPT-4o Mini Audio: $0.003/min | `openai` SDK | GPT-4o Mini Audio undercuts everyone at $0.003/min. 99+ languages. |
-| **Deepgram** | STT + TTS | $200 free credits | STT Nova-3: ~$0.0059/min · TTS Aura-2: $0.030/1K chars | `@deepgram/sdk` — excellent TS | Real-time STT for voice agents. Flux model has built-in end-of-turn detection. |
-| **AssemblyAI** | STT | Free tier available | ~$0.37/hr (volume discounts to $0.27/hr) | `assemblyai` — good TS SDK | Best speaker diarization & audio intelligence. Slam-1 speech-language model. |
-| **ElevenLabs** | TTS + STT | Free tier (10K chars/mo) | TTS Flash v2.5: $0.050/1K chars · STT Scribe v2: competitive | `elevenlabs` — good TS SDK | Most natural-sounding voices. Voice cloning. 75ms time-to-first-audio. |
-| **PlayHT** | TTS | Limited free | From $31/mo · 829 voices, 142 languages | REST API | Largest voice library. Good for content creation at scale. |
-| **Cartesia** | TTS + STT | Developer sandbox | TTS: $38/1M chars · STT (Ink): $0.13/hr — cheapest STT on market | REST + WebSocket API | Ultra-low latency TTS (~40ms). Ink STT undercuts Whisper at $0.13/hr vs $0.36/hr. |
+| **[OpenAI Whisper API](https://platform.openai.com/docs/guides/speech-to-text)** | STT | $5 free credits | $0.006/min ($0.36/hr) · GPT-4o Mini Audio: $0.003/min | `openai` SDK | GPT-4o Mini Audio undercuts everyone at $0.003/min. 99+ languages. |
+| **[Deepgram](https://deepgram.com)** | STT + TTS | $200 free credits | STT Nova-3: ~$0.0059/min · TTS Aura-2: $0.030/1K chars | `@deepgram/sdk` — excellent TS | Real-time STT for voice agents. Flux model has built-in end-of-turn detection. |
+| **[AssemblyAI](https://www.assemblyai.com)** | STT | Free tier available | ~$0.37/hr (volume discounts to $0.27/hr) | `assemblyai` — good TS SDK | Best speaker diarization & audio intelligence. Slam-1 speech-language model. |
+| **[ElevenLabs](https://elevenlabs.io)** | TTS + STT | Free tier (10K chars/mo) | TTS Flash v2.5: $0.050/1K chars · STT Scribe v2: competitive | `elevenlabs` — good TS SDK | Most natural-sounding voices. Voice cloning. 75ms time-to-first-audio. |
+| **[PlayHT](https://play.ht)** | TTS | Limited free | From $31/mo · 829 voices, 142 languages | REST API | Largest voice library. Good for content creation at scale. |
+| **[Cartesia](https://cartesia.ai)** | TTS + STT | Developer sandbox | TTS: $38/1M chars · STT (Ink): $0.13/hr — cheapest STT on market | REST + WebSocket API | Ultra-low latency TTS (~40ms). Ink STT undercuts Whisper at $0.13/hr vs $0.36/hr. |
 
 ### Recommendations
 
@@ -125,13 +125,13 @@ STT = Speech-to-Text, TTS = Text-to-Speech.
 
 | Name | Free Tier | Price per Image | API Available? | Best For |
 |------|-----------|----------------|----------------|----------|
-| **OpenAI GPT Image** | $5 free credits | GPT Image 1 Mini: $0.005 (low) to $0.017 (high) · Full: $0.04-$0.17 | Yes — via `openai` SDK | Cheapest option (Mini). Good quality. Easy integration. |
-| **DALL-E 3** | $5 free credits | ~$0.04/image (standard) | Yes — legacy, via `openai` SDK | Legacy. Use GPT Image instead. |
-| **Black Forest Labs (FLUX)** | None | Kontext Pro: $0.04 · FLUX.2 Pro: $0.03/megapixel · Pro 1.1: $0.04 · Kontext Max: $0.08 | Yes — REST API | Best open-model quality. Kontext models for image editing. Enterprise self-hosted from $999/mo. |
-| **Stability AI** | Free credits on signup | ~$0.02-$0.06/image (varies by model) | Yes — REST API | Open-source ecosystem (Stable Diffusion). Self-hostable. |
-| **Ideogram** | Free tier (limited) | ~$0.04/image via API · Plans from $20/mo | Yes — API available | Best text rendering in images. Logos and typography. |
-| **Leonardo AI** | Free tier (150 tokens/day) | Plans from $10/mo (8.5K tokens/mo) | Yes — REST API | Design-focused. Good UI for non-developers. Fine-tuning. |
-| **Midjourney** | None | Plans from $10/mo | No official public API | Best artistic quality — but no API makes it useless for SaaS. |
+| **[OpenAI GPT Image](https://platform.openai.com/docs/guides/images)** | $5 free credits | GPT Image 1 Mini: $0.005 (low) to $0.017 (high) · Full: $0.04-$0.17 | Yes — via `openai` SDK | Cheapest option (Mini). Good quality. Easy integration. |
+| **[DALL-E 3](https://platform.openai.com/docs/guides/images)** | $5 free credits | ~$0.04/image (standard) | Yes — legacy, via `openai` SDK | Legacy. Use GPT Image instead. |
+| **[Black Forest Labs (FLUX)](https://blackforestlabs.ai)** | None | Kontext Pro: $0.04 · FLUX.2 Pro: $0.03/megapixel · Pro 1.1: $0.04 · Kontext Max: $0.08 | Yes — REST API | Best open-model quality. Kontext models for image editing. Enterprise self-hosted from $999/mo. |
+| **[Stability AI](https://stability.ai)** | Free credits on signup | ~$0.02-$0.06/image (varies by model) | Yes — REST API | Open-source ecosystem (Stable Diffusion). Self-hostable. |
+| **[Ideogram](https://ideogram.ai)** | Free tier (limited) | ~$0.04/image via API · Plans from $20/mo | Yes — API available | Best text rendering in images. Logos and typography. |
+| **[Leonardo AI](https://leonardo.ai)** | Free tier (150 tokens/day) | Plans from $10/mo (8.5K tokens/mo) | Yes — REST API | Design-focused. Good UI for non-developers. Fine-tuning. |
+| **[Midjourney](https://www.midjourney.com)** | None | Plans from $10/mo | No official public API | Best artistic quality — but no API makes it useless for SaaS. |
 
 ### Recommendations
 
@@ -153,12 +153,12 @@ The youngest and most expensive category. API availability is limited.
 
 | Name | Free Tier | Price | API Available? | Best For |
 |------|-----------|-------|----------------|----------|
-| **Runway** | Limited free trial | From $12/mo (Gen-4.5) | Yes — API for enterprise | Cinematic quality. Most mature platform. |
-| **Pika** | Free tier (limited) | From $8/mo | Limited API | Quick social media clips. Most affordable entry. |
-| **Kling** | Free tier | From $6.99/mo | API available | Strong motion quality. Cheapest paid tier. |
-| **Luma (Dream Machine)** | Free tier (limited) | Unlimited plan: $29.99/mo | API available (Ray2) | Best value for unlimited generation. Good 3D understanding. |
-| **Synthesia** | Free trial | From $29/mo | Yes — REST API | AI avatar videos. Training/marketing content. |
-| **HeyGen** | Free trial | From ~$29/mo | Yes — REST API | AI avatar + voice cloning. Personalized video at scale. |
+| **[Runway](https://runwayml.com)** | Limited free trial | From $12/mo (Gen-4.5) | Yes — API for enterprise | Cinematic quality. Most mature platform. |
+| **[Pika](https://pika.art)** | Free tier (limited) | From $8/mo | Limited API | Quick social media clips. Most affordable entry. |
+| **[Kling](https://klingai.com)** | Free tier | From $6.99/mo | API available | Strong motion quality. Cheapest paid tier. |
+| **[Luma (Dream Machine)](https://lumalabs.ai)** | Free tier (limited) | Unlimited plan: $29.99/mo | API available (Ray2) | Best value for unlimited generation. Good 3D understanding. |
+| **[Synthesia](https://www.synthesia.io)** | Free trial | From $29/mo | Yes — REST API | AI avatar videos. Training/marketing content. |
+| **[HeyGen](https://www.heygen.com)** | Free trial | From ~$29/mo | Yes — REST API | AI avatar + voice cloning. Personalized video at scale. |
 
 ### Recommendations
 
@@ -181,12 +181,12 @@ Frameworks and tools for building autonomous AI agents.
 
 | Name | Free Tier | Price | TS SDK | Best For |
 |------|-----------|-------|--------|----------|
-| **Vercel AI SDK** | Open source (free) | Free (pay for LLM usage only) | `ai` — best-in-class TS/Next.js DX | Best DX for React/Next.js. Streaming-first. 25+ provider integrations. Native edge support. |
-| **LangChain / LangGraph** | Open source (free) | LangSmith from $39/mo for tracing | `langchain` + `@langchain/core` — TS support | Most complete agent ecosystem. Graph-based workflows. 47M+ PyPI downloads. |
-| **Anthropic Agent SDK** | Free (uses Claude API credits) | Pay for Claude API usage only | Yes — TS SDK | Lightweight, opinionated. MCP support for tool ecosystem. Best on Claude. |
-| **CrewAI** | Open source (free) | Enterprise plans available | Python-first (no native TS) | Multi-agent role-based systems. 44K+ GitHub stars. Easy to learn. |
-| **Composio** | Free tier (1K executions/mo) | Usage-based beyond free | `composio-core` — good TS | Tool/API integration layer. 250+ tools, 500+ apps. Works with all major frameworks. |
-| **Microsoft AutoGen (AG2)** | Open source (free) | Free | Python-first | Multi-agent conversations. Merging with Semantic Kernel. |
+| **[Vercel AI SDK](https://sdk.vercel.ai)** | Open source (free) | Free (pay for LLM usage only) | `ai` — best-in-class TS/Next.js DX | Best DX for React/Next.js. Streaming-first. 25+ provider integrations. Native edge support. |
+| **[LangChain / LangGraph](https://www.langchain.com)** | Open source (free) | LangSmith from $39/mo for tracing | `langchain` + `@langchain/core` — TS support | Most complete agent ecosystem. Graph-based workflows. 47M+ PyPI downloads. |
+| **[Anthropic Agent SDK](https://docs.anthropic.com/en/docs/agents)** | Free (uses Claude API credits) | Pay for Claude API usage only | Yes — TS SDK | Lightweight, opinionated. MCP support for tool ecosystem. Best on Claude. |
+| **[CrewAI](https://www.crewai.com)** | Open source (free) | Enterprise plans available | Python-first (no native TS) | Multi-agent role-based systems. 44K+ GitHub stars. Easy to learn. |
+| **[Composio](https://composio.dev)** | Free tier (1K executions/mo) | Usage-based beyond free | `composio-core` — good TS | Tool/API integration layer. 250+ tools, 500+ apps. Works with all major frameworks. |
+| **[Microsoft AutoGen (AG2)](https://github.com/microsoft/autogen)** | Open source (free) | Free | Python-first | Multi-agent conversations. Merging with Semantic Kernel. |
 
 ### Recommendations
 
@@ -212,12 +212,12 @@ Specialized APIs that give your app superpowers.
 
 | Name | What It Does | Free Tier | Price | TS SDK | Best For |
 |------|-------------|-----------|-------|--------|----------|
-| **Firecrawl** | Web scraping & crawling optimized for LLMs | Free tier (500 credits) | ~$0.83/1K pages. Plans from $19/mo | `@mendable/firecrawl-js` — good TS | Cleanest web-to-markdown pipeline. Built for RAG. |
-| **Browserbase** | Managed headless browser infrastructure | Free tier available | Usage-based | TS SDK available | Running browser agents at scale. Handles anti-bot, sessions. |
-| **Exa** | Neural search engine (finds similar content) | 1,000 free credits | Usage-based | `exa-js` — good TS SDK | Semantic web search. Finds content by meaning, not keywords. |
-| **Tavily** | Search API built for AI agents | Free tier (1K searches/mo) | $0.008/credit, from $30/mo | `@tavily/core` — good TS | Quick factual answers for agents. Purpose-built for LLM tool use. |
-| **Perplexity Sonar API** | Search + LLM answer in one call | None | Sonar: $5/1K searches + $0.30/MTok · Pro: $5/1K + $3/MTok. Citation tokens now free. | REST API (OpenAI-compatible) | Grounded answers with citations. Citation tokens no longer billed (2026 change). |
-| **Unstructured** | Document parsing (PDF, DOCX, images to text) | Free OSS library | Hosted API: usage-based | Python-first; REST API for TS | Extract structured data from messy documents. ETL for RAG. |
+| **[Firecrawl](https://www.firecrawl.dev)** | Web scraping & crawling optimized for LLMs | Free tier (500 credits) | ~$0.83/1K pages. Plans from $19/mo | `@mendable/firecrawl-js` — good TS | Cleanest web-to-markdown pipeline. Built for RAG. |
+| **[Browserbase](https://www.browserbase.com)** | Managed headless browser infrastructure | Free tier available | Usage-based | TS SDK available | Running browser agents at scale. Handles anti-bot, sessions. |
+| **[Exa](https://exa.ai)** | Neural search engine (finds similar content) | 1,000 free credits | Usage-based | `exa-js` — good TS SDK | Semantic web search. Finds content by meaning, not keywords. |
+| **[Tavily](https://tavily.com)** | Search API built for AI agents | Free tier (1K searches/mo) | $0.008/credit, from $30/mo | `@tavily/core` — good TS | Quick factual answers for agents. Purpose-built for LLM tool use. |
+| **[Perplexity Sonar API](https://docs.perplexity.ai)** | Search + LLM answer in one call | None | Sonar: $5/1K searches + $0.30/MTok · Pro: $5/1K + $3/MTok. Citation tokens now free. | REST API (OpenAI-compatible) | Grounded answers with citations. Citation tokens no longer billed (2026 change). |
+| **[Unstructured](https://unstructured.io)** | Document parsing (PDF, DOCX, images to text) | Free OSS library | Hosted API: usage-based | Python-first; REST API for TS | Extract structured data from messy documents. ETL for RAG. |
 
 ### Recommendations
 
@@ -243,21 +243,21 @@ If I were building an AI-powered SaaS today with TypeScript/Next.js, here's what
 
 | Layer | Pick | Why | Monthly Cost (light usage) |
 |-------|------|-----|---------------------------|
-| **Primary LLM** | Anthropic Claude Sonnet 4.6 | Best coding + reasoning. Excellent TS SDK. Prompt caching saves 90%. | ~$10-50 |
-| **Cheap/Fast LLM** | Google Gemini Flash (free tier) or DeepSeek V3.2 ($0.28/$0.42) | Prototyping on Gemini free tier, then DeepSeek for production bulk tasks. | $0-10 |
-| **Embeddings** | OpenAI text-embedding-3-small | $0.02/MTok is essentially free. Good enough for 95% of RAG use cases. | ~$1-5 |
-| **Web Scraping** | Firecrawl | Clean markdown output. Built for LLMs. Saves days of scraping infra work. | $0-19 |
-| **Search** | Tavily | 1K free searches/mo. Dead simple agent tool integration. | $0-30 |
+| **Primary LLM** | [Anthropic Claude Sonnet 4.6](https://www.anthropic.com) | Best coding + reasoning. Excellent TS SDK. Prompt caching saves 90%. | ~$10-50 |
+| **Cheap/Fast LLM** | [Google Gemini Flash](https://ai.google.dev) (free tier) or [DeepSeek V3.2](https://www.deepseek.com) ($0.28/$0.42) | Prototyping on Gemini free tier, then DeepSeek for production bulk tasks. | $0-10 |
+| **Embeddings** | [OpenAI text-embedding-3-small](https://platform.openai.com/docs/guides/embeddings) | $0.02/MTok is essentially free. Good enough for 95% of RAG use cases. | ~$1-5 |
+| **Web Scraping** | [Firecrawl](https://www.firecrawl.dev) | Clean markdown output. Built for LLMs. Saves days of scraping infra work. | $0-19 |
+| **Search** | [Tavily](https://tavily.com) | 1K free searches/mo. Dead simple agent tool integration. | $0-30 |
 
 ### Add When You Need Them
 
 | Layer | Pick | When |
 |-------|------|------|
-| **App Framework** | Vercel AI SDK (`ai` package) | Day 1 if you're on Next.js — streaming, tool calling, provider switching for free |
-| **Voice** | Deepgram Flux (STT) + Cartesia (TTS) | When you add voice features — lowest latency combo |
-| **Images** | FLUX Kontext Pro ($0.04/img) | When you need image generation or editing |
-| **Observability** | Helicone (free 100K req/mo) | When you need to debug costs/latency |
-| **Agent tools** | Composio | When your agent needs to connect to 10+ external APIs |
+| **App Framework** | [Vercel AI SDK](https://sdk.vercel.ai) (`ai` package) | Day 1 if you're on Next.js — streaming, tool calling, provider switching for free |
+| **Voice** | [Deepgram](https://deepgram.com) Flux (STT) + [Cartesia](https://cartesia.ai) (TTS) | When you add voice features — lowest latency combo |
+| **Images** | [FLUX Kontext Pro](https://blackforestlabs.ai) ($0.04/img) | When you need image generation or editing |
+| **Observability** | [Helicone](https://www.helicone.ai) (free 100K req/mo) | When you need to debug costs/latency |
+| **Agent tools** | [Composio](https://composio.dev) | When your agent needs to connect to 10+ external APIs |
 
 ### Total Monthly Budget: $15-100/month
 
