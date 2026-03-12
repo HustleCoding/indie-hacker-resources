@@ -35,6 +35,14 @@ const GUIDES: GuideMeta[] = [
     file: "payment-billing-apis.md",
     date: "March 2026",
   },
+  {
+    slug: "communication-notification-apis",
+    title: "Communication & Notification APIs",
+    subtitle:
+      "Messaging, notifications, and real-time communication",
+    file: "communication-notification-apis.md",
+    date: "March 2026",
+  },
 ];
 
 export function getAllGuides(): GuideMeta[] {
