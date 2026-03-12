@@ -10,6 +10,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > Transactional email is where DX and deliverability both matter. Most indie teams should optimize for fast template iteration first, then optimize cost later.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Resend](https://resend.com)** | [Pricing](https://resend.com/pricing) | 3,000 emails/mo | Pro from $20/mo for 50K emails | Excellent | Best TS and React Email DX |
@@ -29,6 +32,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 2. Marketing Email & Newsletter
 
 > “Marketing email” splits into two jobs: event-driven lifecycle CRM for SaaS, and newsletter/media distribution. They should not be treated like the same purchase.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -50,6 +56,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > This section was missing, and it matters. Many indie products should not build phone verification by hand on top of raw SMS APIs.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Twilio Verify](https://www.twilio.com/verify)** | [Pricing](https://www.twilio.com/en-us/verify/pricing) | Trial credits, no durable free production tier | SMS verification from about 5c per successful verify plus channel fees; WhatsApp and email flows also available | Excellent | Default OTP and phone verification API |
@@ -68,6 +77,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > SMS bills are never just the headline per-message fee. Carrier fees, number rental, and country-specific WhatsApp pricing all matter.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Twilio](https://www.twilio.com)** | [US messaging pricing](https://www.twilio.com/en-us/sms/pricing/us) | No real free production tier | US SMS about $0.0083 plus carrier fees; WhatsApp adds Twilio markup plus Meta fees | Excellent | Most mature messaging API and docs |
@@ -84,6 +96,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 5. Push, In-App, and Notification Infrastructure
 
 > Push and in-app should be one decision, not two separate shopping trips. The real question is whether you only need a delivery pipe, or a full notification system with preferences, feeds, and channel routing.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -106,6 +121,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > This section was also missing. It matters because support tooling is often the first real communication surface users notice.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Crisp](https://crisp.chat)** | [Pricing](https://crisp.chat/en/pricing/) | Free basic live chat | Paid from $95/mo on Essentials | Good | Cheapest serious shared inbox plus chat |
@@ -124,6 +142,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 7. Chat, Realtime, and Webhooks
 
 > Full chat, pub/sub, collaboration, and webhook delivery are different purchases. Treat them separately.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -146,6 +167,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 8. The Best $0 to Low-Cost Communication Stack
 
 > The cheapest stack is usually one email provider, one notification layer, and zero extra vendors until the product proves it needs them.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the tables below.
 
 ### My default stack
 

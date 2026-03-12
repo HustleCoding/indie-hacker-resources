@@ -10,6 +10,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > The first real decision is not Stripe vs Paddle. It is: do you want the lowest raw processing fee, or do you want a Merchant of Record to own tax, remittance, and checkout compliance for you?
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Stripe](https://stripe.com)** | [Pricing](https://stripe.com/pricing) | No monthly fee | 2.9% + 30c domestic cards; +1.5% international cards; +1% currency conversion | Excellent | Best general gateway if you will own tax/compliance |
@@ -36,6 +39,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > This category matters more in 2026 because AI SaaS pricing is increasingly seat + usage + prepaid credits, not just monthly subscriptions.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Stripe Billing](https://stripe.com/billing)** | [Pricing](https://stripe.com/billing/pricing) | No monthly minimum on pay-as-you-go | 0.7% of billing volume PAYG; annual plans from $620/mo; includes usage-based billing and 100M meter events/mo | Excellent | Default choice for SaaS subscriptions plus AI usage metering |
@@ -54,6 +60,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 3. Marketplaces & Payouts
 
 > The old guide missed this. If you run a marketplace, creator platform, affiliate network, or “pay many people” product, this section matters as much as checkout.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -74,6 +83,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > Metrics tools are only useful if they stay cheap long enough to become habit.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[ChartMogul](https://chartmogul.com)** | [Pricing](https://chartmogul.com/pricing/) | Free below about $120K ARR | Pro from $99/mo annual or $119/mo monthly | Good | Best free-to-paid SaaS metrics path |
@@ -91,6 +103,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 5. Tax & Compliance
 
 > The previous guide badly understated Stripe Tax. This is the section where a lot of indie hackers accidentally choose the wrong stack.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -111,6 +126,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > Add affiliate tooling after you have a conversion motion worth amplifying, not before.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Rewardful](https://www.rewardful.com)** | [Pricing overview](https://www.rewardful.com/use-cases/financial-tools) | No permanent free tier | Starter from $49/mo; Managed Payouts adds 3% of payout volume if used | Limited | Stripe-first SaaS affiliate programs |
@@ -129,6 +147,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 > If you ship iOS or Android subscriptions, Stripe, Paddle, and Polar do not replace App Store or Play billing rules. You need a mobile billing layer.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[RevenueCat](https://www.revenuecat.com)** | [Pricing](https://www.revenuecat.com/pricing/) | Free up to $2.5K monthly tracked revenue | Starter is 1% above the free threshold | Excellent | App Store and Play subscription infrastructure |
@@ -144,6 +165,9 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 ## 8. The Best Indie-Hacker Billing Stacks
 
 > The best stack depends on whether your biggest risk is compliance, usage billing, or payouts.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the tables below.
 
 ### My default picks
 

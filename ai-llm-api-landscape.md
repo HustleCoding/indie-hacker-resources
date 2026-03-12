@@ -10,6 +10,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > Trustworthy comparisons matter more than giant model lists. For most indie hackers, the real choices are: premium reasoning model, cheap workhorse model, and maybe one fallback.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Anthropic Claude](https://www.anthropic.com)** | [Pricing](https://docs.anthropic.com/en/docs/about-claude/pricing) | No permanent free API tier | Sonnet 4.6: $3/$15 per 1M tokens; Opus 4.6: $15/$75 | Excellent | Best premium reasoning + coding |
@@ -42,6 +45,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > Most indie SaaS apps should start with cheap embeddings plus Postgres/pgvector, then add reranking before they add a dedicated vector stack.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings)** | [Pricing](https://platform.openai.com/pricing) | No durable free tier | `text-embedding-3-small` $0.02 / 1M tokens; large $0.13 | Excellent | Default embedding choice |
@@ -66,6 +72,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > Indie hackers usually need tracing and evals earlier than they need multi-agent frameworks.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[OpenRouter](https://openrouter.ai)** | [Pricing](https://openrouter.ai/models) | Free models exist | About 5% markup on base model cost | OpenAI-compatible | Fast multi-model routing |
@@ -87,6 +96,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > Safety is not just enterprise theater. If users can upload text, PDFs, screenshots, or prompts, you need some moderation story.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[OpenAI Moderation](https://platform.openai.com/docs/guides/moderation)** | [Pricing](https://platform.openai.com/pricing) | Yes | `omni-moderation` is free | Excellent | Cheapest default moderation layer |
@@ -104,6 +116,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 ## 5. Speech & Audio
 
 > Audio pricing shifts fast. Re-check before shipping, especially if minutes are core to your margin.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -125,6 +140,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > The current best indie-hacker pattern is one cheap image model for product features and one premium model only if image quality is core value.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[OpenAI GPT Image Latest](https://platform.openai.com/docs/guides/image-generation)** | [Pricing](https://platform.openai.com/docs/pricing/) | No durable free tier | 1024x1024: $0.009 low, $0.034 medium, $0.133 high | Excellent | Best all-round product image API |
@@ -144,6 +162,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > This deserves its own section. Upload-to-insight SaaS products live or die on parsing quality.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[LlamaParse](https://www.llamaindex.ai/llamaparse)** | [Overview](https://www.llamaindex.ai/llamaparse) | Free plan exists | Pricing evolves by plan; see current LlamaParse page | Good | Best indie-hacker OCR/parsing default |
@@ -161,6 +182,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 ## 8. Search, Scraping & Browser APIs
 
 > These tools often create more user value than adding yet another frontier model.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -182,6 +206,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 > This is the lowest-signal category for most indie hackers. If video is not the product, skip it.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[OpenAI Sora 2](https://platform.openai.com/pricing)** | [Pricing](https://platform.openai.com/docs/pricing/) | No free production tier | $0.10/s, $0.30/s, or $0.50/s depending on mode and resolution | Excellent | Most API-native current option |
@@ -196,6 +223,9 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 ## 10. The Best Indie-Hacker AI Stack
 
 > Keep the stack boring. Add evals and safety before you add framework complexity.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the tables below.
 
 ### My default 2026 stack
 

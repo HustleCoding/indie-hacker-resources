@@ -14,6 +14,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 
 > Serverless DX matters more than raw benchmarks early. The big split in 2026: all-in-one BaaS, true scale-to-zero Postgres, edge SQLite, and “not really indie-priced” enterprise DBs.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Supabase](https://supabase.com)** | [Pricing](https://supabase.com/pricing) | 2 projects, 500MB DB, pauses after ~1 week idle | $25/mo Pro + usage | Excellent | Full BaaS: Postgres + auth + storage + realtime |
@@ -38,6 +41,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 
 > In 2026, most indie apps still should not start with a dedicated vector DB. If you are under roughly 100K chunks, Postgres + pgvector is usually enough.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Pinecone](https://www.pinecone.io)** | [Pricing](https://www.pinecone.io/pricing/) | Starter project w/ limited serverless capacity | Standard starts at $50/mo minimum; est. ~$50+ to hold ~1M 1536-d vectors | Excellent | Zero-ops managed vector DB |
@@ -60,6 +66,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 ## 3. File & Media Storage
 
 > Raw storage is cheap. Egress is where bills explode. For public downloads, avatars, user uploads, backups, and AI files, egress policy matters more than storage price.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -84,6 +93,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 
 > “Serverless-friendly” now mostly means HTTP APIs, edge-safe auth, and no always-on Redis box to babysit.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Upstash Redis](https://upstash.com/redis)** | [Pricing](https://upstash.com/pricing/redis) | 256MB, 500K commands/mo | $0.20/100K requests + storage/bandwidth | Excellent | Serverless Redis |
@@ -104,6 +116,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 ## 5. Search
 
 > Hosted search still splits into two camps: per-search billing (Algolia) and fixed-resource billing (Meilisearch Cloud, Typesense, Elastic). For small SaaS apps, the cheapest answer is often “no extra search service yet.”
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -126,6 +141,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 
 > The pattern matters more than the logo. Event-driven workflows, cron, HTTP queueing, and Redis queues solve different problems.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[Inngest](https://www.inngest.com)** | [Pricing](https://www.inngest.com/pricing) | 50K executions/mo | Pro from $75/mo | Excellent | Event-driven workflows |
@@ -146,6 +164,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 ## 7. Edge / Serverless Compute
 
 > Cold start matters only if requests are latency-sensitive. If your app is mostly user-facing HTTP, isolate-based edge runtimes still feel best.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
@@ -169,6 +190,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 
 > For indie hackers, the best flag tool is usually the one already attached to analytics or the one you can self-host forever.
 
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the table below.
+
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
 | **[LaunchDarkly](https://launchdarkly.com)** | [Plans](https://launchdarkly.com/docs/home/account/plans) | Developer free tier after trial, capped for small usage | Paid tiers are largely quote/custom shaped | Excellent | Enterprise governance and rollouts |
@@ -190,6 +214,9 @@ Search normalization rule used below: if a vendor does not publish per-query pri
 ## 9. The Best $0/Month Stack
 
 > The ultimate free-tier stack is the **smallest** stack. Do not add vector DB, hosted search, Redis, or queues on day 1 unless the product truly needs them.
+
+Last verified: March 12, 2026.
+Sources: official pricing/docs links in the tables below.
 
 ### My pick: best true-$0 stack until traction
 
