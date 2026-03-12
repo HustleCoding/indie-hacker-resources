@@ -43,6 +43,14 @@ const GUIDES: GuideMeta[] = [
     file: "communication-notification-apis.md",
     date: "March 2026",
   },
+  {
+    slug: "data-storage-infrastructure-apis",
+    title: "Data, Storage & Infrastructure APIs",
+    subtitle:
+      "Databases, storage, queues, edge compute, search, and flags",
+    file: "data-storage-infrastructure-apis.md",
+    date: "March 2026",
+  },
 ];
 
 export function getAllGuides(): GuideMeta[] {
