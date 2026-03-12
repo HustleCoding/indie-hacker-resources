@@ -1,56 +1,62 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import type { ToolEntry } from "@/lib/tools";
+import { usePathname } from "next/navigation";
 
 interface SearchDialogProps {
   tools: ToolEntry[];
 }
 
 export default function SearchDialog({ tools }: SearchDialogProps) {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const filtered = query.trim()
-    ? tools.filter((t) => {
-        const q = query.toLowerCase();
-        return (
-          t.name.toLowerCase().includes(q) ||
-          t.section.toLowerCase().includes(q) ||
-          t.bestFor.toLowerCase().includes(q)
-        );
-      })
-    : tools;
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return tools;
+    return tools.filter((tool) => tool.searchText.includes(q));
+  }, [query, tools]);
 
-  const open = useCallback(() => {
+  const selectedItem =
+    filtered.length === 0
+      ? null
+      : filtered[Math.min(selectedIndex, filtered.length - 1)];
+
+  const open = () => {
     setIsOpen(true);
     setQuery("");
     setSelectedIndex(0);
-  }, []);
+  };
 
-  const close = useCallback(() => {
+  const close = () => {
     setIsOpen(false);
     setQuery("");
-  }, []);
+    setSelectedIndex(0);
+  };
 
-  const navigateToTool = useCallback(
-    (tool: ToolEntry) => {
-      close();
-      const el = document.getElementById(tool.sectionId);
-      if (el) {
-        if (el.getAttribute("aria-expanded") === "false") {
-          el.click();
-        }
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      }
-    },
-    [close]
-  );
+  const navigateToTool = (tool: ToolEntry) => {
+    close();
+    const targetPath = `/guides/${tool.guideSlug}`;
+
+    if (pathname !== targetPath) {
+      window.location.href = `${targetPath}#${tool.sectionId}`;
+      return;
+    }
+
+    const el = document.getElementById(tool.sectionId);
+    if (!el) return;
+    if (el.getAttribute("aria-expanded") === "false") {
+      el.click();
+    }
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  };
 
   useEffect(() => {
     function handleOpenSearch() {
@@ -74,7 +80,7 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
       document.removeEventListener("open-search", handleOpenSearch);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, open, close]);
+  }, [isOpen, pathname]);
 
   useEffect(() => {
     if (isOpen) {
@@ -85,26 +91,24 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      setSelectedIndex((i) => Math.min(i + 1, filtered.length - 1));
+      setSelectedIndex((i) => Math.min(i + 1, Math.max(filtered.length - 1, 0)));
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setSelectedIndex((i) => Math.max(i - 1, 0));
-    } else if (e.key === "Enter" && filtered[selectedIndex]) {
+    } else if (e.key === "Enter" && selectedItem) {
       e.preventDefault();
-      navigateToTool(filtered[selectedIndex]);
+      navigateToTool(selectedItem);
     }
   };
 
   useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
-
-  useEffect(() => {
     if (listRef.current) {
-      const selected = listRef.current.children[selectedIndex] as HTMLElement;
+      const selected = listRef.current.children[
+        Math.min(selectedIndex, Math.max(filtered.length - 1, 0))
+      ] as HTMLElement;
       selected?.scrollIntoView({ block: "nearest" });
     }
-  }, [selectedIndex]);
+  }, [filtered.length, selectedIndex]);
 
   if (!isOpen) return null;
 
@@ -137,9 +141,12 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
             ref={inputRef}
             type="text"
             className="search-input"
-            placeholder="Search tools, providers, features..."
+            placeholder="Search guides, tools, pricing, features..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setSelectedIndex(0);
+            }}
             onKeyDown={handleKeyDown}
             aria-label="Search"
             autoComplete="off"
@@ -156,15 +163,18 @@ export default function SearchDialog({ tools }: SearchDialogProps) {
           ) : (
             filtered.map((tool, i) => (
               <button
-                key={`${tool.name}-${tool.section}`}
-                className={`search-result ${i === selectedIndex ? "search-result-active" : ""}`}
+                key={`${tool.guideSlug}-${tool.section}-${tool.name}`}
+                className={`search-result ${selectedItem === tool ? "search-result-active" : ""}`}
                 onClick={() => navigateToTool(tool)}
                 onMouseEnter={() => setSelectedIndex(i)}
               >
                 <div className="search-result-left">
                   <span className="search-result-name">{tool.name}</span>
+                  <span className="search-result-section">
+                    {tool.guideTitle} · {tool.section}
+                  </span>
                 </div>
-                <span className="search-result-section">{tool.section}</span>
+                <span className="search-result-section">{tool.bestFor}</span>
               </button>
             ))
           )}

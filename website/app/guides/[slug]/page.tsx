@@ -42,6 +42,7 @@ export default async function GuidePage({ params }: Props) {
   if (!guide) notFound();
 
   const categoryCount = new Set(guide.tools.map((t) => t.section)).size;
+  const otherGuides = getAllGuides().filter((item) => item.slug !== slug);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -71,6 +72,26 @@ export default async function GuidePage({ params }: Props) {
 
           {/* Content */}
           <MarkdownRenderer content={guide.content} />
+
+          {otherGuides.length > 0 && (
+            <section className="mt-14">
+              <h2 className="text-xl font-semibold text-text">More Guides</h2>
+              <div className="grid gap-3 mt-4 sm:grid-cols-2">
+                {otherGuides.map((item) => (
+                  <a
+                    key={item.slug}
+                    href={`/guides/${item.slug}`}
+                    className="block border border-border rounded-lg p-4 no-underline hover:border-accent/40 hover:bg-bg-secondary transition-colors"
+                  >
+                    <p className="text-text font-medium">{item.title}</p>
+                    <p className="text-text-secondary text-sm mt-1">
+                      {item.subtitle}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Footer */}
           <footer className="mt-20 pt-6 border-t border-border text-text-muted text-sm flex items-center justify-between">

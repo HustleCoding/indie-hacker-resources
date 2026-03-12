@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { TocItem } from "@/lib/toc";
 
@@ -10,6 +11,7 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({
   items,
+  sectionCounts,
 }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
@@ -87,12 +89,12 @@ export default function TableOfContents({
         aria-label="Table of contents"
       >
         <div className="mb-5 pb-4 border-b border-border">
-          <a
+          <Link
             href="/"
             className="text-text text-sm font-semibold no-underline hover:text-accent transition-colors"
           >
             Indie Hacker Resources
-          </a>
+          </Link>
         </div>
 
         {/* Sidebar search shortcut */}
@@ -119,6 +121,11 @@ export default function TableOfContents({
               `}
             >
               <span className="toc-link-text">{item.text}</span>
+              {sectionCounts[item.id] ? (
+                <span className="ml-2 text-text-muted text-[0.7rem]">
+                  {sectionCounts[item.id]}
+                </span>
+              ) : null}
             </button>
           ))}
         </div>

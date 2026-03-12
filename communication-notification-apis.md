@@ -1,227 +1,165 @@
-# Communication & Notification APIs for Indie Hackers (2026)
+# Communication & Notification APIs for Indie Hackers
 
-A comprehensive guide to messaging, notification, and communication APIs — covering pricing, free tiers, TypeScript SDK availability, and best use cases.
+**A practical 2026 guide to email, SMS, OTP, push, in-app notifications, support inboxes, chat, and webhook delivery for TS/Next.js builders — March 2026**
+
+Prices change fast. `URL` links point to official pricing/docs pages.
 
 ---
 
 ## 1. Transactional Email
 
-| Service | Free Tier | Paid Starting | Pricing Model | TS SDK | React Email | Best For |
-|---------|-----------|---------------|---------------|--------|-------------|----------|
-| **[Resend](https://resend.com/pricing)** | 3,000 emails/mo | $20/mo (50K) | Volume-based | Yes (first-class) | Native support | Best DX, React Email creator |
-| **[Postmark](https://postmarkapp.com/pricing)** | 100 emails/mo | $15/mo (10K) | Volume + overage ($1.30–1.80/1K) | Yes | No native | Highest deliverability |
-| **[Amazon SES](https://aws.amazon.com/ses/pricing/)** | 3,000/mo (12 mo) | $0.10/1K emails | Pure pay-per-use | Yes (AWS SDK) | No | Cheapest at scale |
-| **[Plunk](https://www.useplunk.com/pricing)** | 1,000–3,000/mo | $0.001/email | Pay-per-email | Yes (Node) | No | Self-hostable (AGPL-3.0) |
-| **[SendGrid](https://sendgrid.com/en-us/pricing)** | 100/day forever | $19.95/mo (50K) | Volume tiers | Yes | No native | Legacy, massive ecosystem |
-| **[Mailgun](https://www.mailgun.com/pricing/)** | 100/day | $15/mo (10K) | Volume tiers | Yes | No | Email validation included |
-| **[Loops](https://loops.so/pricing)** | 1,000 contacts, 4K emails/mo | $49/mo (5K contacts) | Contact-based, unlimited sends | Yes | No | SaaS transactional + marketing unified |
+> Transactional email is where DX and deliverability both matter. Most indie teams should optimize for fast template iteration first, then optimize cost later.
 
-### Deliverability & DX Comparison
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Resend](https://resend.com)** | [Pricing](https://resend.com/pricing) | 3,000 emails/mo | Pro from $20/mo for 50K emails | Excellent | Best TS and React Email DX |
+| **[Postmark](https://postmarkapp.com)** | [Pricing](https://postmarkapp.com/pricing) | 100 emails/mo developer tier | From $15/mo for 10K emails | Good | Highest deliverability and boring reliability |
+| **[Amazon SES](https://aws.amazon.com/ses/)** | [Pricing](https://aws.amazon.com/ses/pricing/) | 3,000 emails/mo for 12 months on new-account free tier | About $0.10 per 1K emails | Good | Cheapest at real scale |
+| **[Loops](https://loops.so)** | [Pricing](https://loops.so/pricing) | 1,000 contacts and 4,000 emails/mo | From $49/mo for 5K contacts | Good | One tool for transactional plus lifecycle email |
+| **[Plunk](https://www.useplunk.com)** | [Pricing](https://www.useplunk.com/pricing) | Small free tier | About $0.001 per email on pay-as-you-go | Good | Self-hostable or indie-friendly email send |
 
-- **Resend** — Built by the React Email team. First-class TypeScript SDK, best developer docs, native React Email support. Good deliverability with dedicated IPs available at $30/mo on Scale plan.
-- **Postmark** — Industry-leading deliverability. Separates transactional from marketing streams. 3-hour support response on all paid plans. Less modern DX.
-- **Amazon SES** — Cheapest at scale ($0.10/1K) but requires more setup. No built-in templates or preference management. Hidden costs (Virtual Deliverability Manager adds $0.07/1K).
-- **Plunk** — Open-source alternative built on AWS SES. Self-hostable. Unlimited contacts stored free. Smaller community.
+### Email read
 
-**Verdict:** **Resend** for DX. **Postmark** for deliverability. **Amazon SES** for cost at scale.
+- **Use Resend first.** Best docs, best TS SDK, best template workflow.
+- **Use Postmark** if inbox placement is your real business risk.
+- **Use SES** only once volume makes the complexity worth it.
 
 ---
 
-## 2. Marketing Email / CRM
+## 2. Marketing Email & Newsletter
 
-| Service | Free Tier | Paid Starting | Pricing Model | API-First? | Best For |
-|---------|-----------|---------------|---------------|------------|----------|
-| **[Loops](https://loops.so/pricing)** | 1K contacts | $49/mo (5K contacts) | Contact-based, unlimited sends | Yes | SaaS email (transactional + marketing unified) |
-| **[Customer.io](https://customer.io/pricing)** | 14-day trial | $100/mo (5K profiles) | Profile-based | Yes | Event-driven automation, API-first CRM |
-| **[Kit (ConvertKit)](https://kit.com)** | 10K subscribers | $39/mo (1K subs) | Subscriber-based | Yes | Creator newsletters, landing pages |
-| **[Brevo](https://www.brevo.com/pricing/)** | 300/day (~9K/mo) | $9/mo (5K emails) | Email volume, unlimited contacts | Partial | Budget marketing + transactional combo |
-| **[Mailchimp](https://mailchimp.com/pricing/)** | 250 contacts | $13/mo (500 contacts) | Contact-based | Partial | Legacy, huge template library |
-| **[Beehiiv](https://www.beehiiv.com/pricing)** | 2,500 subs | $43/mo (1K subs) | Subscriber-based | Partial | Newsletter monetization, 0% commission |
+> “Marketing email” splits into two jobs: event-driven lifecycle CRM for SaaS, and newsletter/media distribution. They should not be treated like the same purchase.
 
-### API-First Picks
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Loops](https://loops.so)** | [Pricing](https://loops.so/pricing) | 1,000 contacts | From $49/mo | Good | SaaS lifecycle email with a clean API |
+| **[Customer.io](https://customer.io)** | [Pricing](https://customer.io/pricing) | 14-day trial | From $100/mo | Good | Event-driven customer messaging across channels |
+| **[Beehiiv](https://www.beehiiv.com)** | [Pricing](https://www.beehiiv.com/pricing) | Up to 2,500 subscribers | Paid from about $43/mo yearly on Scale entry | Partial | Newsletter-first businesses and monetized media |
+| **[Brevo](https://www.brevo.com)** | [Pricing](https://www.brevo.com/pricing/) | 300 emails/day | Paid from $9/mo | Partial | Cheapest all-in-one marketing email start |
 
-- **Customer.io** — Full API, webhooks, event-driven workflows. Supports email, SMS, push, in-app. Starts at $100/mo which is steep for early-stage.
-- **Loops** — Built specifically for SaaS. Clean API. One tool for transactional + marketing. $49/mo for 5K contacts with unlimited sends.
+### Marketing read
 
-**Mailchimp** and **Brevo** are UI-first with APIs bolted on. Brevo is significantly cheaper than Mailchimp (often less than half at scale) and includes transactional emails in the base plan.
-
-**Beehiiv** stands out for newsletter creators — 0% commission on paid subscriptions, built-in monetization tools, and a generous free tier of 2,500 subscribers.
-
-**Indie hacker pick:** **Loops** if you want one tool for transactional + marketing. **Beehiiv** if newsletter-focused with monetization.
+- **Loops** is the best API-first choice for SaaS lifecycle work.
+- **Customer.io** is stronger, but the price floor is real.
+- **Beehiiv** is for newsletter businesses, not normal SaaS onboarding.
+- **Brevo** is the budget pick when “good enough” wins.
 
 ---
 
-## 3. SMS & WhatsApp
+## 3. OTP & Verify APIs
 
-| Service | SMS (US) per msg | WhatsApp per msg | Free Tier | TS SDK | Best For |
-|---------|------------------|------------------|-----------|--------|----------|
-| **[Twilio](https://www.twilio.com/en-us/sms/pricing/us)** | $0.0083 + carrier fees | $0.005 markup + Meta fees | Pay-as-you-go (no free) | Yes (first-class) | Most mature, best docs |
-| **[Vonage](https://www.vonage.com/communications-apis/sms/pricing/)** | $0.00809 | ~$0.005 markup + Meta fees | Pay-as-you-go | Yes | Simpler API |
-| **[Bird (MessageBird)](https://bird.com/en/pricing)** | $0.008 | $0.0147 (US) | Pay-as-you-go | Yes | Aggressive pricing, unified platform |
-| **[Infobip](https://www.infobip.com/pricing)** | ~$0.01 | Varies by category | Enterprise minimums (~$600/mo) | Yes | Enterprise omnichannel |
-| **[Sinch](https://www.sinch.com)** | $0.07 | Varies | Pay-as-you-go | Yes | Global carrier reach |
+> This section was missing, and it matters. Many indie products should not build phone verification by hand on top of raw SMS APIs.
 
-### WhatsApp Business API (Meta Direct)
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Twilio Verify](https://www.twilio.com/verify)** | [Pricing](https://www.twilio.com/en-us/verify/pricing) | Trial credits, no durable free production tier | SMS verification from about 5c per successful verify plus channel fees; WhatsApp and email flows also available | Excellent | Default OTP and phone verification API |
+| **[Vonage Verify](https://www.vonage.com/communications-apis/verify/)** | [Pricing](https://www.vonage.com/communications-apis/verify/pricing/) | Trial credits | Usage-based by country and channel | Good | Competitive phone verification without Twilio sprawl |
+| **[Stytch](https://stytch.com)** | [Pricing](https://stytch.com/credits) | Free up to 10K MAUs | Pay-as-you-go after free MAU allowance | Good | Auth-native OTP, magic links, passkeys, and MFA |
 
-Since July 2025, WhatsApp uses per-message pricing (no longer conversation-based):
+### OTP read
 
-| Category | Price Range (per msg) | Notes |
-|----------|----------------------|-------|
-| Marketing | $0.0109–$0.1323 | Varies by recipient country |
-| Utility | $0.0008–$0.0456 | Order updates, account alerts |
-| Authentication | $0.0008–$0.0456 | OTP, verification codes |
-| Service (within 24h) | **Free** | Replies to customer messages |
-
-Rates are determined by the **recipient's country**, not the sender's location. Messages via Click-to-WhatsApp ads get a 72-hour free window.
-
-### Additional Costs
-
-- **Twilio:** Phone number rental $1.15/mo (local), $2.15/mo (toll-free). Failed message fee $0.001/msg.
-- **All providers:** Carrier surcharges apply on top of base rates.
-
-**Indie hacker pick:** **Twilio** — best TS SDK, most tutorials, predictable pricing. For WhatsApp-only, consider Meta's API directly.
+- **Use Twilio Verify** if you truly need SMS or WhatsApp verification.
+- **Use Stytch** if verification is really part of auth, not a comms feature.
+- **Do not build OTP on raw SMS endpoints** unless you enjoy rate limits, fraud, resend logic, and template headaches.
 
 ---
 
-## 4. Push Notifications
+## 4. SMS & WhatsApp
 
-| Service | Free Tier | Paid Starting | Multi-Channel? | TS SDK | Best For |
-|---------|-----------|---------------|----------------|--------|----------|
-| **[Firebase FCM](https://firebase.google.com/pricing)** | Unlimited (free) | N/A | Push only | Yes (Firebase SDK) | Free push, Google ecosystem |
-| **[OneSignal](https://onesignal.com/pricing)** | Unlimited push subs, 10K emails | $19/mo + usage | Email, SMS, push, in-app | Yes | Easy setup, generous free push |
-| **[Knock](https://knock.app/pricing)** | 10K notifications/mo | ~$0.005/msg beyond | Email, push, in-app, SMS, Slack | Yes | Workflow orchestration, preferences |
-| **[Novu](https://novu.co/pricing/)** | 10K runs/mo (cloud), unlimited (self-host) | $30/mo (30K runs) | Email, push, in-app, SMS, chat | Yes | Open-source (MIT), self-hostable |
-| **[Courier](https://www.courier.com/pricing)** | 10K notifications/mo | $99/mo | Email, push, SMS, in-app, Slack, Teams | Yes | Visual workflow builder, no-code routing |
+> SMS bills are never just the headline per-message fee. Carrier fees, number rental, and country-specific WhatsApp pricing all matter.
 
-### Multi-Channel Orchestration Comparison
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Twilio](https://www.twilio.com)** | [US messaging pricing](https://www.twilio.com/en-us/sms/pricing/us) | No real free production tier | US SMS about $0.0083 plus carrier fees; WhatsApp adds Twilio markup plus Meta fees | Excellent | Most mature messaging API and docs |
+| **[Vonage](https://www.vonage.com)** | [SMS pricing](https://www.vonage.com/communications-apis/sms/pricing/) | Trial credits | US SMS about $0.00809; WhatsApp usage-based | Good | Simpler alternative to Twilio |
 
-| Feature | Knock | Novu | Courier | OneSignal |
-|---------|-------|------|---------|-----------|
-| Workflow builder | Code-first | Code-first | Visual (no-code) | Basic |
-| Preference center | Excellent | Built-in | Good | Basic |
-| Self-hostable | No | Yes (MIT) | No | No |
-| In-app feed component | Yes (React) | Yes (React) | Yes (React, iOS, Android) | Limited |
-| Channel fallback logic | Yes | Yes | Yes (best) | Limited |
-| Price at 50K msgs/mo | ~$200 | $30 (self-host: $0) | $99+ | ~$19 + usage |
+### WhatsApp reality
 
-- **Knock** — Best preference management, clean API, ideal for SaaS notification centers
-- **Novu** — Open-source, self-hostable, most flexible, best for budget-conscious teams
-- **Courier** — Best visual workflow builder, but expensive ($99/mo minimum)
-- **OneSignal** — Best free tier for pure push, weaker on orchestration
-- **FCM** — Free but push-only, no orchestration layer
+- **WhatsApp is now per-message, not conversation-priced.**
+- **Meta direct can be cheaper,** but Twilio and Vonage save integration time.
+- **Service replies inside the support window can be effectively free,** so support use cases price differently from outbound marketing.
 
 ---
 
-## 5. In-App Notifications
+## 5. Push, In-App, and Notification Infrastructure
 
-| Service | Free Tier | Paid Starting | Preference Center | TS SDK | Best For |
-|---------|-----------|---------------|-------------------|--------|----------|
-| **[Knock](https://knock.app/pricing)** | 10K/mo | ~$0.005/msg | Yes (excellent) | Yes | Best preference management + in-app feed |
-| **[Novu](https://novu.co/pricing/)** | 10K/mo (cloud) | $30/mo | Yes (built-in) | Yes | Open-source, full control |
-| **[Engagespot](https://engagespot.co/pricing)** | 10K notifications/mo | $20/mo | Yes | Yes | Budget alternative to MagicBell |
-| **[MagicBell](https://www.magicbell.com/pricing)** | 100 MAU | $99/mo (2K MAU) | Yes | Yes | Polished UI, expensive |
+> Push and in-app should be one decision, not two separate shopping trips. The real question is whether you only need a delivery pipe, or a full notification system with preferences, feeds, and channel routing.
 
-### Notification Preferences Comparison
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Firebase FCM](https://firebase.google.com)** | [Pricing](https://firebase.google.com/pricing) | Free | Free | Good | Free push delivery pipe |
+| **[OneSignal](https://onesignal.com)** | [Pricing](https://onesignal.com/pricing) | Free push and limited messaging | Paid from $19/mo plus usage | Good | Easiest managed push start |
+| **[Novu](https://novu.co)** | [Pricing](https://novu.co/pricing/) | Cloud free tier; OSS/self-host free | Paid cloud from $30/mo; self-host stays free | Good | Best open-source notification infrastructure |
+| **[Knock](https://knock.app)** | [Guide](https://knock.app/manuals/notification-infrastructure/how-to-choose-a-notification-infrastructure-platform) | 10K notifications/mo | Paid plans jump fast from the free tier; best used when notification UX matters | Excellent | Best managed notification workflows and preferences |
+| **[Engagespot](https://engagespot.co)** | [Pricing](https://engagespot.co/pricing) | 10K notifications/mo | Paid from $20/mo | Good | Cheapest managed in-app plus notification center |
 
-- **Knock** — Granular per-channel, per-category preferences. Drop-in preference center React component. Users can mute specific workflows or channels.
-- **Novu** — Similar preference model to Knock. Advantage: self-hostable, so you own the data. In-app inbox component included.
-- **Engagespot** — Good preference center at $20/mo. Best budget pick for in-app notifications.
-- **MagicBell** — Polished UI out of the box, but at $99/mo for 2K MAU it's expensive for indie hackers. The 100 MAU free tier is very limited.
+### Notification read
 
-**Indie hacker pick:** **Knock** (free 10K/mo) or **Novu** (self-host for free) for the best preference management.
-
----
-
-## 6. Chat & Real-Time Messaging
-
-| Service | Free Tier | Paid Starting | Pricing Model | TS SDK | Best For |
-|---------|-----------|---------------|---------------|--------|----------|
-| **[Stream](https://getstream.io/chat/pricing/)** | Free (<5 team, <$10K MRR) | Custom (MAU-based) | MAU + connections + storage | Yes | Best chat UI components (React) |
-| **[SendBird](https://sendbird.com/pricing/chat)** | 1K MAU (30-day trial) | Custom (MAU-based) | MAU-based | Yes | Enterprise chat, moderation |
-| **[Ably](https://ably.com)** | 6M msgs/mo | $2.50/M msgs | Messages + connections + channels | Yes | Reliability (99.999% SLA) |
-| **[Pusher](https://pusher.com)** | 200 connections | $49/mo (500 connections) | Connections-based | Yes | Simple real-time (events, presence) |
-| **[PubNub](https://www.pubnub.com)** | 200 MAU | $98/mo (1K MAU) | MAU + messages | Yes | Low latency, IoT/gaming |
-| **[Liveblocks](https://liveblocks.io/pricing)** | 500 monthly active rooms | $29/mo | Rooms-based | Yes | Collaborative features (cursors, comments) |
-
-### When to Use What
-
-- **Stream** — Full chat solution with pre-built React UI components. Free for startups (<5 team, <$10K MRR). Best option for adding chat to a SaaS product.
-- **Ably** — Raw pub/sub with 99.999% uptime SLA. Use when you need reliable real-time data sync, not necessarily chat UI.
-- **Pusher** — Simplest integration for basic real-time features (typing indicators, presence, live updates). Predictable pricing based on connections.
-- **PubNub** — Lowest latency (<50ms globally). Best for gaming, IoT, or latency-critical applications. Expensive for chat use cases.
-- **SendBird** — Enterprise-grade with moderation, translation, help desk. Expensive and less transparent pricing.
-- **Liveblocks** — Not a chat tool. Use for collaborative features like Figma-style cursors, comments, and CRDT-based real-time editing.
-
-**Indie hacker pick:** **Stream** (free for small startups) for full chat. **Pusher** for simple real-time features. **Ably** for reliability-critical pub/sub.
+- **FCM is a pipe, not a notification product.**
+- **Novu is the best $0 answer** if you can self-host or live with its cloud limits.
+- **Knock is the best managed product** if user preferences, digests, and in-app feeds are core UX.
+- **OneSignal** stays great for push-heavy apps that do not need much workflow logic.
 
 ---
 
-## 7. Webhooks (Sending to Customers)
+## 6. Support Chat & Shared Inbox
 
-| Service | Free Tier | Paid Starting | Open Source | TS SDK | Best For |
-|---------|-----------|---------------|-------------|--------|----------|
-| **[Svix](https://www.svix.com/pricing/)** | 50K msgs, 10 msg/s | $10/mo (100K msgs) | Yes (MIT) | Yes | Building webhook infra into your product |
-| **[Hookdeck](https://hookdeck.com/pricing)** | 10K events/mo | $15/mo | No | Yes | Receiving & managing inbound webhooks |
-| **[ngrok](https://ngrok.com)** | Free (limited) | $10/mo | Partial | Yes | Local dev/testing webhooks |
+> This section was also missing. It matters because support tooling is often the first real communication surface users notice.
 
-### Key Distinctions
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Crisp](https://crisp.chat)** | [Pricing](https://crisp.chat/en/pricing/) | Free basic live chat | Paid from $95/mo on Essentials | Good | Cheapest serious shared inbox plus chat |
+| **[Plain](https://www.plain.com)** | [Pricing](https://www.plain.com/pricing) | No permanent free tier | From $39 per seat/mo | Good | API-native B2B support infrastructure |
+| **[Front](https://front.com)** | [Pricing](https://front.com/pricing) | No free tier | From $29 per seat/mo annual | Partial | Polished shared inbox for small support teams |
+| **[Intercom](https://www.intercom.com)** | [Pricing archive](https://www.intercom.com/pricing-archive/p5-0) | No normal free tier | Essential from $39 per seat/mo; advanced plans climb quickly | Partial | Support plus in-app messaging if you can use startup discounts |
 
-- **Svix** = For products that **send** webhooks to customers (like Stripe does). Open-source (MIT), self-hostable. Handles retries, signing, delivery guarantees. SOC 2 Type II compliant.
-- **Hookdeck** = For **receiving** and managing inbound webhooks reliably. Retry logic, transformation, fan-out. 75% cheaper than DIY infrastructure.
-- **ngrok** = For **local development** — tunneling webhooks to your localhost during development.
+### Support read
 
-**Indie hacker pick:** **Svix** if your product needs to send webhooks. Start with the free tier (50K msgs), upgrade to $10/mo. Self-host for free if needed.
-
----
-
-## Cheapest Multi-Channel Notification Stack
-
-### Option A: Fully Managed ($0/mo to start)
-
-| Channel | Service | Cost | Limit |
-|---------|---------|------|-------|
-| Transactional Email | **Resend** Free | $0 | 3K emails/mo |
-| Push Notifications | **Firebase FCM** | $0 | Unlimited |
-| In-App Notifications | **Novu** Free (cloud) | $0 | 10K notifications/mo |
-
-**Total: $0/mo** — Covers email + push + in-app with notification preferences.
-**At scale:** Resend Pro ($20/mo) + Novu Pro ($30/mo) = **$50/mo**.
-
-### Option B: Unified Orchestration ($0/mo, self-hosted)
-
-| Channel | Service | Cost | Notes |
-|---------|---------|------|-------|
-| Orchestration | **Novu** (self-hosted) | $0 | MIT license, all channels |
-| Email Provider | **Resend** or **Amazon SES** | $0–$20/mo | Bring your own provider |
-| Push Provider | **Firebase FCM** | $0 | Free |
-
-**Total: $0/mo** — Novu orchestrates everything, you bring your own delivery providers. Most control, some DevOps overhead.
-
-### Option C: Zero DevOps ($0/mo to start)
-
-| Channel | Service | Cost | Limit |
-|---------|---------|------|-------|
-| Orchestration + In-App | **Knock** Free | $0 | 10K notifications/mo |
-| Email Delivery | **Resend** Free | $0 | 3K emails/mo |
-| Push Delivery | **Firebase FCM** | $0 | Unlimited |
-
-**Total: $0/mo** — Knock handles orchestration, preferences, and in-app feed. Best DX with minimal setup.
+- **Crisp** is the best “cheap but real” support inbox.
+- **Plain** is the best fit for modern B2B support workflows, APIs, and internal tooling.
+- **Intercom** only makes indie sense with startup pricing or if you deeply want its integrated support stack.
 
 ---
 
-## TL;DR Recommendations
+## 7. Chat, Realtime, and Webhooks
 
-| Category | Top Pick | Runner-Up | Budget Pick |
-|----------|----------|-----------|-------------|
-| Transactional Email | **Resend** | Postmark | Amazon SES |
-| Marketing Email | **Loops** | Customer.io | Brevo |
-| Newsletter | **Beehiiv** | Kit | Loops |
-| SMS | **Twilio** | Bird | Vonage |
-| WhatsApp | **Twilio** | Bird | Meta direct |
-| Push Notifications | **FCM** (free) | OneSignal | Novu |
-| In-App Notifications | **Knock** | Novu | Engagespot |
-| Multi-Channel Orchestration | **Knock** | Novu (self-host) | Courier |
-| Chat/Real-Time | **Stream** | Pusher | Ably |
-| Webhooks (sending) | **Svix** | — | Self-host Svix |
+> Full chat, pub/sub, collaboration, and webhook delivery are different purchases. Treat them separately.
 
-**Start with:** Resend + FCM + Knock (or Novu) = **$0/mo** multi-channel notifications with orchestration and preference management.
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[Stream](https://getstream.io)** | [Chat pricing](https://getstream.io/chat/pricing/) | Startup-friendly free access exists for small teams and small revenue | Paid plans are usage and MAU based | Excellent | Full chat UI and backend fast |
+| **[Ably](https://ably.com)** | [Pricing](https://ably.com/docs/platform/pricing) | 6M messages/mo | Paid from $2.50 per million messages | Excellent | Reliable realtime pub/sub |
+| **[Liveblocks](https://liveblocks.io)** | [Pricing](https://liveblocks.io/pricing) | 500 monthly active rooms | Paid from $29/mo | Excellent | Collaborative comments, presence, and multiplayer UX |
+| **[Svix](https://www.svix.com)** | [Pricing](https://www.svix.com/pricing/) | Free tier | Pro starts high; self-host exists | Good | Sending webhooks to your customers |
+| **[Hookdeck](https://hookdeck.com)** | [Pricing](https://hookdeck.com/pricing) | Free tier | Team from $39/mo; usage above free | Good | Receiving and managing inbound webhooks |
+
+### Realtime read
+
+- **Stream** is for product chat.
+- **Ably** is for raw realtime sync.
+- **Liveblocks** is for collaborative product UX.
+- **Svix** is for outbound webhooks.
+- **Hookdeck** is for inbound webhook sanity.
+
+---
+
+## 8. The Best $0 to Low-Cost Communication Stack
+
+> The cheapest stack is usually one email provider, one notification layer, and zero extra vendors until the product proves it needs them.
+
+### My default stack
+
+| Layer | Pick | Why |
+|------|------|-----|
+| Transactional email | **Resend** | Best TS DX and a real free tier |
+| Push delivery | **Firebase FCM** | Free forever |
+| In-app and orchestration | **Novu** | Real free path, OSS exit hatch |
+| OTP | **Stytch** or **Twilio Verify only when needed** | Do not pay SMS tax too early |
+| Support inbox | **Crisp** | Cheapest real support stack |
+| Realtime | **Ably** | Free tier lasts and the DX is strong |
+
+### Final take
+
+- **Start with Resend + FCM + Novu.**
+- **Add Twilio Verify only when phone auth is clearly required.**
+- **Buy Plain or Intercom later.** Most early SaaS apps do not need them on day 1.

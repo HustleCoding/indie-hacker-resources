@@ -64,8 +64,16 @@ export function getGuide(slug: string): Guide | null {
   const filePath = path.join(process.cwd(), "content", meta.file);
   const content = fs.readFileSync(filePath, "utf-8");
   const tocItems = extractTocItems(content);
-  const tools = extractTools(content);
+  const tools = extractTools(content, {
+    guideSlug: meta.slug,
+    guideTitle: meta.title,
+    guideSubtitle: meta.subtitle,
+  });
   const sectionCounts = extractSectionCounts(content);
 
   return { ...meta, content, tocItems, tools, sectionCounts };
+}
+
+export function getAllGuideTools(): ToolEntry[] {
+  return GUIDES.flatMap((meta) => getGuide(meta.slug)?.tools || []);
 }

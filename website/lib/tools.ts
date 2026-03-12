@@ -4,6 +4,9 @@ export interface ToolEntry {
   section: string;
   sectionId: string;
   bestFor: string;
+  guideSlug: string;
+  guideTitle: string;
+  searchText: string;
 }
 
 function slugify(text: string): string {
@@ -15,11 +18,22 @@ function slugify(text: string): string {
     .trim();
 }
 
+function cleanCellText(text: string): string {
+  return text
+    .replace(/\*\*/g, "")
+    .replace(/`/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .trim();
+}
+
 /**
  * Parse all tools from markdown table rows.
  * Matches rows with bold linked names: | **[Name](url)** | ... |
  */
-export function extractTools(markdown: string): ToolEntry[] {
+export function extractTools(
+  markdown: string,
+  context?: { guideSlug?: string; guideTitle?: string; guideSubtitle?: string }
+): ToolEntry[] {
   const tools: ToolEntry[] = [];
   let currentSection = "";
   let currentSectionId = "";
@@ -38,16 +52,26 @@ export function extractTools(markdown: string): ToolEntry[] {
         .split("|")
         .map((c) => c.trim())
         .filter(Boolean);
+      const searchText = [
+        toolMatch[1],
+        currentSection,
+        context?.guideTitle,
+        context?.guideSubtitle,
+        ...cells.map(cleanCellText),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
       tools.push({
         name: toolMatch[1],
         url: toolMatch[2],
         section: currentSection,
         sectionId: currentSectionId,
-        bestFor:
-          cells[cells.length - 1]
-            ?.replace(/\*\*/g, "")
-            .replace(/`/g, "")
-            .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") || "",
+        bestFor: cleanCellText(cells[cells.length - 1] || ""),
+        guideSlug: context?.guideSlug || "",
+        guideTitle: context?.guideTitle || "",
+        searchText,
       });
     }
   }

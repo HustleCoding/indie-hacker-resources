@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { getAllGuides, getGuide } from "@/lib/guides";
+import SearchDialog from "@/components/SearchDialog";
+import SearchTrigger from "@/components/SearchTrigger";
+import { getAllGuideTools, getAllGuides, getGuide } from "@/lib/guides";
 
 export default function Home() {
   const guides = getAllGuides().map((meta) => {
@@ -10,9 +12,12 @@ export default function Home() {
       : 0;
     return { ...meta, toolCount, categoryCount };
   });
+  const allTools = getAllGuideTools();
+  const totalTools = guides.reduce((sum, guide) => sum + guide.toolCount, 0);
 
   return (
     <div className="min-h-screen bg-bg">
+      <SearchDialog tools={allTools} />
       <main className="max-w-3xl mx-auto px-6 py-20 lg:px-10">
         <header className="mb-12">
           <h1 className="text-3xl font-bold tracking-tight text-text">
@@ -21,6 +26,15 @@ export default function Home() {
           <p className="text-text-secondary mt-2 text-base">
             Curated tool guides for solo developers building SaaS with
             TypeScript/Next.js
+          </p>
+          <div className="mt-5">
+            <SearchTrigger
+              label="Search all guides, tools, pricing..."
+              ariaLabel="Search all guides (Cmd+K)"
+            />
+          </div>
+          <p className="text-text-muted text-sm mt-3">
+            {guides.length} guides &middot; {totalTools} tools &middot; updated March 2026
           </p>
         </header>
 
