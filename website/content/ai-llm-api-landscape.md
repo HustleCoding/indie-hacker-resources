@@ -1,6 +1,6 @@
 # AI & LLM API Landscape for Indie Hackers
 
-**A practical 2026 guide to LLMs, embeddings, evals, safety, OCR, and AI product APIs for TS/Next.js builders — March 2026**
+**A practical 2026 guide to LLMs, embeddings, evals, safety, OCR, and AI product APIs for TS/Next.js builders — March 12, 2026**
 
 Prices change constantly. `URL` links point to official pricing/docs pages.
 
@@ -12,11 +12,11 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
-| **[Anthropic Claude](https://www.anthropic.com)** | [Pricing](https://docs.anthropic.com/en/docs/about-claude/pricing) | No permanent free API tier | Claude Sonnet 4: $3/$15 per 1M tokens; Opus 4.1: $15/$75 | Excellent | Best premium reasoning + coding |
+| **[Anthropic Claude](https://www.anthropic.com)** | [Pricing](https://docs.anthropic.com/en/docs/about-claude/pricing) | No permanent free API tier | Sonnet 4.6: $3/$15 per 1M tokens; Opus 4.6: $15/$75 | Excellent | Best premium reasoning + coding |
 | **[Claude Haiku 4.5](https://www.anthropic.com/claude/haiku)** | [Model page](https://www.anthropic.com/claude/haiku) | No permanent free API tier | $1/$5 per 1M tokens | Excellent | Cheapest Claude for agent flows |
-| **[OpenAI](https://platform.openai.com)** | [Pricing](https://platform.openai.com/docs/pricing/) | No predictable free production tier | GPT-5.2: $1.75/$14; GPT-5.2-pro: $21/$168 | Excellent | Broadest ecosystem + strongest all-round platform |
-| **[Google Gemini](https://ai.google.dev)** | [Pricing](https://ai.google.dev/pricing) | Yes, real free tier for testing | Gemini 2.5 Flash-Lite: $0.10/$0.40; Flash: $0.30/$2.50 | Good | Cheap prototyping + huge context |
-| **[Mistral](https://mistral.ai)** | [Pricing](https://mistral.ai/pricing) | Yes, `Experiment` API tier for eval/prototyping | Medium 3.1: $0.40/$2.00; Large 3: $0.50/$1.50 | Good | EU-hosted API + strong price/perf |
+| **[OpenAI](https://platform.openai.com)** | [Pricing](https://platform.openai.com/docs/pricing/) | No predictable free production tier | GPT-5.4: $3.50/$28 per 1M tokens; GPT-5.4-pro: $35/$280 | Excellent | Broadest ecosystem + strongest all-round platform |
+| **[Google Gemini](https://ai.google.dev)** | [Pricing](https://ai.google.dev/pricing) | Yes, real free tier for testing | Gemini 3.0 Fast Preview: $0.20/$0.60; Gemini 3.0 Pro Preview: $0.50/$4.50 | Good | Cheap prototyping + huge context |
+| **[Mistral](https://mistral.ai)** | [Pricing](https://mistral.ai/pricing) | Yes, `Experiment` API tier for eval/prototyping | Small 3.2: $0.10/$0.30; Medium 3.1: $0.40/$2.00 | Good | EU-hosted API + strong price/perf |
 | **[DeepSeek](https://www.deepseek.com)** | [Pricing](https://api-docs.deepseek.com/quick_start/pricing/) | Limited credits / not a durable free tier | V3.2 chat: $0.28 input cache miss / $0.42 output | OpenAI-compatible | Cheapest serious production text model |
 | **[Together AI](https://www.together.ai)** | [Pricing](https://www.together.ai/pricing) | No durable free tier | Model-dependent; open models from very low cost, eg. gpt-oss-20b $0.05/$0.20 | OpenAI-compatible | Open-model buffet without infra |
 | **[Fireworks AI](https://fireworks.ai)** | [Pricing](https://fireworks.ai/pricing) | $1 free credit | DeepSeek V3 family: $0.56/$1.68; small text models from $0.10 | OpenAI-compatible | Fast hosted open models |
@@ -24,16 +24,16 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 ### What actually matters
 
-- **Best premium model:** Claude Sonnet 4 or OpenAI GPT-5.2.
-- **Best cheap model:** DeepSeek V3.2 or Gemini 2.5 Flash-Lite.
+- **Best premium model:** Claude Sonnet 4.6 or OpenAI GPT-5.4.
+- **Best cheap model:** DeepSeek V3.2 or Mistral Small 3.2.
 - **Best Europe-friendly option:** Mistral.
 - **Best open-model API layer:** Together or Fireworks.
 
 ### Gotchas
 
-- **Do not trust old Anthropic numbers.** Haiku 4.5 is not the old Haiku 3-era price.
-- **Gemini free tier is for prototyping, not production planning.** Quotas and preview model names change fast.
-- **OpenAI model naming is still messy.** Pick specific versions.
+- **Do not trust old Anthropic numbers.** Current pricing is on Sonnet 4.6 and Opus 4.6, not older 4-era shorthand.
+- **Gemini free tier is still for prototyping, not production planning.** The current pricing page now mixes newer 3.0 previews with older families.
+- **OpenAI model naming is still messy.** The current flagship on the pricing page is GPT-5.4, not GPT-5.2.
 - **DeepSeek is amazing on cost, but you may still want Fireworks/Together for ops comfort.**
 
 ---
@@ -107,7 +107,7 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
-| **[OpenAI Whisper](https://platform.openai.com/docs/models/whisper-1)** | [Model page](https://platform.openai.com/docs/models/whisper-1) | No durable free tier | $0.006 / min | Excellent | Simple batch transcription |
+| **[OpenAI Audio](https://platform.openai.com)** | [Pricing](https://platform.openai.com/docs/pricing/) | No durable free tier | `gpt-4o-mini-transcribe` about $0.003 / min; Whisper remains $0.006 / min | Excellent | Cheapest current OpenAI transcription path |
 | **[Deepgram](https://deepgram.com)** | [Pricing](https://deepgram.com/pricing) | Free credits | STT from about $0.0059 / min | Excellent | Real-time voice agents |
 | **[AssemblyAI](https://www.assemblyai.com)** | [Pricing](https://www.assemblyai.com/pricing/) | Free credits | From $0.15 / hr | Good | Transcription + audio intelligence |
 | **[ElevenLabs](https://elevenlabs.io)** | [API pricing](https://elevenlabs.io/pricing/api/) | Free plan | TTS Flash from $0.08 / 1K chars; STT from $0.40 / hr on low tiers | Good | Best voice quality |
@@ -127,7 +127,7 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
-| **[OpenAI GPT Image 1.5](https://platform.openai.com/docs/models/gpt-image-1.5)** | [Model page](https://platform.openai.com/docs/models/gpt-image-1.5) | No durable free tier | 1024x1024: $0.009 low, $0.034 medium, $0.133 high | Excellent | Best all-round product image API |
+| **[OpenAI GPT Image Latest](https://platform.openai.com/docs/guides/image-generation)** | [Pricing](https://platform.openai.com/docs/pricing/) | No durable free tier | 1024x1024: $0.009 low, $0.034 medium, $0.133 high | Excellent | Best all-round product image API |
 | **[OpenAI GPT Image 1 Mini](https://platform.openai.com/docs/models/gpt-image-1-mini/)** | [Model page](https://platform.openai.com/docs/models/gpt-image-1-mini/) | No durable free tier | 1024x1024: $0.005 low, $0.011 medium, $0.036 high | Excellent | Cheapest OpenAI image API |
 | **[Black Forest Labs / FLUX](https://blackforestlabs.ai)** | [API/pricing](https://blackforestlabs.ai) | No free API tier | Model/quality dependent; still a strong quality-per-dollar pick | REST | Best open-model image quality |
 | **[Ideogram](https://ideogram.ai)** | [Pricing](https://ideogram.ai/pricing) | Limited free tier | API/plan pricing from paid tiers | API available | Best text rendering in images |
@@ -146,7 +146,7 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
-| **[LlamaParse](https://www.llamaindex.ai)** | [Docs](https://docs.llamaindex.ai/en/v0.10.33/llama_cloud/llama_parse/) | 1K free pages/day | Paid: 7K free pages/week then $0.003/page | Good | Best indie-hacker OCR/parsing default |
+| **[LlamaParse](https://www.llamaindex.ai/llamaparse)** | [Overview](https://www.llamaindex.ai/llamaparse) | Free plan exists | Pricing evolves by plan; see current LlamaParse page | Good | Best indie-hacker OCR/parsing default |
 | **[Unstructured](https://unstructured.io)** | [Pricing](https://unstructured.io/pricing) | 15,000 free pages, no expiry | PAYG $0.03/page | API-first | Messy enterprise documents |
 | **[Mistral OCR 3](https://docs.mistral.ai/models/ocr-3-25-12)** | [Model page](https://docs.mistral.ai/models/ocr-3-25-12) | No permanent free tier | $2 / 1,000 pages | Good | Cheap OCR with structured extraction |
 
@@ -168,7 +168,7 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 | **[Tavily](https://tavily.com)** | [Pricing](https://tavily.com/pricing) | 1K searches/mo | Paid from ~$30/mo | Good | Agent web search |
 | **[Exa](https://exa.ai)** | [Pricing](https://exa.ai/pricing) | Free credits | Usage-based | Good | Semantic web search |
 | **[Browserbase](https://www.browserbase.com)** | [Pricing](https://www.browserbase.com/pricing) | Free tier | Usage-based | Good | Managed browser agents |
-| **[Perplexity Sonar API](https://docs.perplexity.ai)** | [Pricing](https://www.perplexity.ai/hub/blog/introducing-the-sonar-api) | No durable free tier | Search + token priced; higher than Tavily but more turnkey | OpenAI-compatible | Grounded answers with citations |
+| **[Perplexity Sonar API](https://docs.perplexity.ai)** | [Models](https://docs.perplexity.ai/docs/agent-api/models) | No durable free tier | `perplexity/sonar` from $0.25 / 1M input tokens and $2.50 / 1M output tokens | OpenAI-compatible | Grounded answers with citations |
 
 ### Best picks
 
@@ -184,7 +184,7 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
-| **[OpenAI Sora 2](https://platform.openai.com/pricing)** | [Pricing](https://platform.openai.com/docs/pricing/) | No free production tier | $0.10/s, $0.30/s, or $0.50/s depending on mode/resolution | Excellent | Most API-native current option |
+| **[OpenAI Sora 2](https://platform.openai.com/pricing)** | [Pricing](https://platform.openai.com/docs/pricing/) | No free production tier | $0.10/s, $0.30/s, or $0.50/s depending on mode and resolution | Excellent | Most API-native current option |
 
 ### Reality check
 
@@ -201,8 +201,8 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 | Layer | Pick | Why |
 |------|------|-----|
-| Smart model | **Claude Sonnet 4** | Best premium reasoning/coding value |
-| Cheap model | **DeepSeek V3.2** | Best cost floor for bulk work |
+| Smart model | **Claude Sonnet 4.6** | Best premium reasoning/coding value |
+| Cheap model | **DeepSeek V3.2** or **Mistral Small 3.2** | Best cost floor for bulk work |
 | Embeddings | **OpenAI text-embedding-3-small** | Still absurdly cheap |
 | Retrieval | **pgvector first** | Avoid extra infra early |
 | OCR / parsing | **LlamaParse** | Best practical doc ingestion default |
@@ -222,8 +222,8 @@ Prices change constantly. `URL` links point to official pricing/docs pages.
 
 For most indie hackers, the winning setup in 2026 is:
 
-- **Claude or OpenAI** for premium work
-- **DeepSeek or Gemini paid** for cheap work
+- **Claude Sonnet 4.6 or GPT-5.4** for premium work
+- **DeepSeek V3.2 or Mistral Small 3.2** for cheap work
 - **OpenAI embeddings**
 - **LlamaParse + Firecrawl**
 - **Helicone + OpenAI Moderation**

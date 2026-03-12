@@ -25,7 +25,7 @@ const GUIDES: GuideMeta[] = [
     subtitle:
       "A reference for indie hackers building with TypeScript/Next.js",
     file: "ai-llm-api-landscape.md",
-    date: "March 2026",
+    date: "March 12, 2026",
   },
   {
     slug: "payment-billing-apis",
@@ -33,7 +33,7 @@ const GUIDES: GuideMeta[] = [
     subtitle:
       "Comprehensive guide for Next.js SaaS builders",
     file: "payment-billing-apis.md",
-    date: "March 2026",
+    date: "March 12, 2026",
   },
   {
     slug: "communication-notification-apis",
@@ -41,7 +41,7 @@ const GUIDES: GuideMeta[] = [
     subtitle:
       "Messaging, notifications, and real-time communication",
     file: "communication-notification-apis.md",
-    date: "March 2026",
+    date: "March 12, 2026",
   },
   {
     slug: "data-storage-infrastructure-apis",
@@ -49,7 +49,7 @@ const GUIDES: GuideMeta[] = [
     subtitle:
       "Databases, storage, queues, edge compute, search, and flags",
     file: "data-storage-infrastructure-apis.md",
-    date: "March 2026",
+    date: "March 12, 2026",
   },
 ];
 

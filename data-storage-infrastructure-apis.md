@@ -1,6 +1,6 @@
 # Data, Storage & Infrastructure APIs for Indie Hackers
 
-**Databases, storage, queues, search, and infra APIs for TS/Next.js SaaS builders — March 2026**
+**Databases, storage, queues, search, and infra APIs for TS/Next.js SaaS builders — March 12, 2026**
 
 Prices change fast. `URL` links point to official pricing/docs pages.
 

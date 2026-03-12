@@ -1,6 +1,6 @@
 # Communication & Notification APIs for Indie Hackers
 
-**A practical 2026 guide to email, SMS, OTP, push, in-app notifications, support inboxes, chat, and webhook delivery for TS/Next.js builders — March 2026**
+**A practical 2026 guide to email, SMS, OTP, push, in-app notifications, support inboxes, chat, and webhook delivery for TS/Next.js builders — March 12, 2026**
 
 Prices change fast. `URL` links point to official pricing/docs pages.
 

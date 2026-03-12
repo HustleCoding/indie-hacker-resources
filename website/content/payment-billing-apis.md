@@ -1,6 +1,6 @@
 # Payment & Billing APIs for Indie Hackers
 
-**A practical 2026 guide to processors, merchant-of-record platforms, usage billing, payouts, tax, and SaaS finance tools for TS/Next.js builders — March 2026**
+**A practical 2026 guide to processors, merchant-of-record platforms, usage billing, payouts, tax, and SaaS finance tools for TS/Next.js builders — March 12, 2026**
 
 Prices change fast. `URL` links point to official pricing/docs pages.
 
@@ -57,8 +57,8 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 | Name | URL | Free Tier | Pricing | TS SDK | Best For |
 |------|-----|-----------|---------|--------|----------|
-| **[Stripe Connect](https://stripe.com/connect)** | [Pricing](https://stripe.com/connect/pricing) | No monthly platform minimum when Stripe handles connected-account pricing | If you handle pricing: $2 per active account/mo, 0.25% volume, 25c per payout; Instant Payouts 1% | Excellent | Default choice for SaaS platforms and marketplaces |
-| **[Trolley](https://trolley.com)** | [Pricing](https://trolley.com/trolley-pricing/) | No real free production tier | Pay plan from $49/mo; ACH $1; SEPA, FPS, EFT, NPP about $4; wires $10-$25 | Good | Mass creator, affiliate, contractor, and seller payouts |
+| **[Stripe Connect](https://stripe.com/connect)** | [Pricing](https://stripe.com/connect/pricing) | No monthly platform fee if Stripe prices connected accounts | If Stripe prices connected accounts: no platform fee; if you price them yourself: $2 per active account/mo, 0.25% volume, 25c per payout; Instant Payouts 1% | Excellent | Default choice for SaaS platforms and marketplaces |
+| **[Trolley](https://trolley.com)** | [Pricing](https://trolley.com/trolley-pricing/) | No real free production tier | Pay plan from $49/mo; local payouts from about $1, US about $1.75, global about $2.75; wires higher | Good | Mass creator, affiliate, contractor, and seller payouts |
 | **[Wise Platform](https://wise.com/platform/)** | [Overview](https://wise.com/platform/) | No public self-serve free tier | Custom pricing | Good | Cross-border disbursements with better FX transparency |
 | **[Adyen](https://www.adyen.com)** | [Platforms](https://www.adyen.com/platforms) | No public free tier | Custom pricing | Good | Larger marketplaces needing global payments plus embedded finance |
 
@@ -125,7 +125,23 @@ Prices change fast. `URL` links point to official pricing/docs pages.
 
 ---
 
-## 7. The Best Indie-Hacker Billing Stacks
+## 7. Mobile App Billing
+
+> If you ship iOS or Android subscriptions, Stripe, Paddle, and Polar do not replace App Store or Play billing rules. You need a mobile billing layer.
+
+| Name | URL | Free Tier | Pricing | TS SDK | Best For |
+|------|-----|-----------|---------|--------|----------|
+| **[RevenueCat](https://www.revenuecat.com)** | [Pricing](https://www.revenuecat.com/pricing/) | Free up to $2.5K monthly tracked revenue | Starter is 1% above the free threshold | Excellent | App Store and Play subscription infrastructure |
+
+### Mobile billing read
+
+- **Use RevenueCat** if you have mobile subscriptions.
+- **Do not treat web billing and mobile billing as the same problem.**
+- **Apple and Google rules still shape the product architecture.**
+
+---
+
+## 8. The Best Indie-Hacker Billing Stacks
 
 > The best stack depends on whether your biggest risk is compliance, usage billing, or payouts.
 
